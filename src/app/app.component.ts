@@ -24,7 +24,12 @@ export class AppComponent implements OnInit {
         label: 'Comidas',
         routerLink: 'comida',
         icon: 'fas fa-utensils'
-  },
+      },
+      {
+        label: 'Ingredientes',
+        routerLink: 'ingrediente',
+        icon: 'fas fa-utensils'
+      }
     ];
   }
   ngOnInit(): void {
