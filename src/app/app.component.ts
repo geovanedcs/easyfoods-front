@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
       {
         label: 'Comidas',
         routerLink: 'comida',
-        icon: 'pi pi-check'
-      },
+        icon: 'fas fa-utensils'
+  },
     ];
   }
   ngOnInit(): void {

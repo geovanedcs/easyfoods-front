@@ -18,9 +18,11 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
 import { LoginComponent } from './login/login.component';
-import { ComidaFormComponent } from './comida-form/comida-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { ComidaFormComponent } from './comida/comida-form/comida-form.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 import {HttpClientModule} from '@angular/common/http';
+import { IngredienteComponent } from './ingrediente/ingrediente.component';
+import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {HttpClientModule} from '@angular/common/http';
     ComidaComponent,
     LoginComponent,
     ComidaFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    IngredienteComponent,
+    IngredienteFormComponent
   ],
   imports: [
     BrowserAnimationsModule,
