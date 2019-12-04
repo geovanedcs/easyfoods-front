@@ -7,6 +7,8 @@ import {ComidaFormComponent} from './comida/comida-form/comida-form.component';
 import {LoginFormComponent} from './login/login-form/login-form.component';
 import {IngredienteComponent} from './ingrediente/ingrediente.component';
 import {IngredienteFormComponent} from './ingrediente/ingrediente-form/ingrediente-form.component';
+import {CardapioComponent} from "./cardapio/cardapio.component";
+import {CardapioFormComponent} from "./cardapio/cardapio-form/cardapio-form.component";
 
 
 const routes: Routes = [
@@ -24,6 +26,12 @@ const routes: Routes = [
   },
   {
     path: 'ingrediente/form', component: IngredienteFormComponent
+  },
+  {
+    path: 'cardapio', component: CardapioComponent
+  },
+  {
+    path: 'cardapio/form', component: CardapioFormComponent
   },
   {
     path: 'login', component: LoginComponent

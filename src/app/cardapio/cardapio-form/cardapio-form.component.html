@@ -1,0 +1,48 @@
+<p-card header="Cardápio">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <input [(ngModel)]="objeto.cardapio"
+                   id="cardapio"
+                   pInputText
+                   size="30"
+                   type="text">
+            <label for="cardapio">Cardápio</label>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <p-checkbox [(ngModel)]="checked" binary="true" title="Status" label="Inativo">
+            </p-checkbox>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <p-multiSelect [options]="comidas"
+                           [(ngModel)]="selectedComidas"
+                           [panelStyle]="{minWidth:'12em'}"
+                           optionLabel="comida">
+            </p-multiSelect>
+          <p>Comidas selecionadas:</p>
+          <ng-container *ngFor="let comida of selectedComidas">
+            <tr>
+              <td>{{comida.comida}}</td>
+            </tr>
+          </ng-container>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="text-right m-2">
+    <button (click)="salvar()"
+            class="ui-button-raised"
+            label="Salvar"
+            pButton
+            type="button"></button>
+  </div>
+</p-card>
+
+
+
+

@@ -24,6 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { IngredienteComponent } from './ingrediente/ingrediente.component';
 import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
 import {FormsModule} from '@angular/forms';
+import { CardapioComponent } from './cardapio/cardapio.component';
+import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {FormsModule} from '@angular/forms';
     ComidaFormComponent,
     LoginFormComponent,
     IngredienteComponent,
-    IngredienteFormComponent
+    IngredienteFormComponent,
+    CardapioComponent,
+    CardapioFormComponent
   ],
   imports: [
     BrowserAnimationsModule,
