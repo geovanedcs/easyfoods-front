@@ -13,8 +13,17 @@
       </div>
       <div class="col-12">
         <span class="ui-float-label my-2">
-            <p-multiSelect [options]="ingredientes" [(ngModel)]="ingredientes" [panelStyle]="{minWidth:'12em'}" ></p-multiSelect>
-          <p>Ingredientes selecionados: {{ingredientes}}</p>
+            <p-multiSelect [options]="ingredientes"
+                           [(ngModel)]="selectedIngredientes"
+                           [panelStyle]="{minWidth:'12em'}"
+                           optionLabel="ingrediente">
+            </p-multiSelect>
+          <p>Ingredientes selecionados:</p>
+          <ng-container *ngFor="let ingrediente of selectedIngredientes">
+            <tr>
+              <td>{{ingrediente.ingrediente}}</td>
+            </tr>
+          </ng-container>
         </span>
       </div>
     </div>
