@@ -1,10 +1,4 @@
 <p-card header="Lista de Ingredientes">
-  <div class="text-right m-2">
-    <button class="ui-button-raised"
-            label="Novo"
-            pButton
-            type="button"></button>
-  </div>
   <p-table (onLazyLoad)="carregaLista()"
            [columns]="cols"
            [lazy]="true"
