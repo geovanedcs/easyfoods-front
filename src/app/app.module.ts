@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {
   ButtonModule,
-  CardModule, ConfirmationService,
+  CardModule, CheckboxModule, ConfirmationService,
   ConfirmDialogModule,
   MenuModule,
   MessageModule, MessageService,
@@ -23,6 +23,7 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import { IngredienteComponent } from './ingrediente/ingrediente.component';
 import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingredi
     ConfirmDialogModule,
     HttpClientModule,
     MessageModule,
+    FormsModule,
+    CheckboxModule,
   ],
   providers: [MessageService, ConfirmationService, SidebarModule],
   bootstrap: [AppComponent]

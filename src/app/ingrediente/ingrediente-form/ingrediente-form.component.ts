@@ -11,6 +11,7 @@ import {MessageService} from 'primeng';
 })
 export class IngredienteFormComponent implements OnInit {
   objeto: Ingrediente;
+  checked = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private ingredienteService: IngredienteService,
