@@ -9,7 +9,7 @@ import {
   CardModule, CheckboxModule, ConfirmationService,
   ConfirmDialogModule,
   MenuModule,
-  MessageModule, MessageService,
+  MessageModule, MessageService, MultiSelectModule,
   SidebarModule,
   TableModule,
   ToastModule,
@@ -52,6 +52,7 @@ import {FormsModule} from '@angular/forms';
     MessageModule,
     FormsModule,
     CheckboxModule,
+    MultiSelectModule,
   ],
   providers: [MessageService, ConfirmationService, SidebarModule],
   bootstrap: [AppComponent]
