@@ -24,10 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { IngredienteComponent } from './ingrediente/ingrediente.component';
 import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
 import {FormsModule} from '@angular/forms';
-import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.component';
-
-
-
+import { CardapioComponent } from './cardapio/cardapio.component';
+import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +37,8 @@ import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.compo
     LoginFormComponent,
     IngredienteComponent,
     IngredienteFormComponent,
-    TamanhoMarmitaComponent,
+    CardapioComponent,
+    CardapioFormComponent
   ],
   imports: [
     BrowserAnimationsModule,
