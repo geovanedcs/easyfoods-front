@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Cardapio} from "../model/cardapio";
-import {CardapioService} from "../service/cardapio.service";
-import {Title} from "@angular/platform-browser";
+import {Cardapio} from '../model/cardapio';
+import {CardapioService} from '../service/cardapio.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cardapio',

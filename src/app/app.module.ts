@@ -26,6 +26,8 @@ import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingredi
 import {FormsModule} from '@angular/forms';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.component';
+import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.component';
+import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.co
     IngredienteComponent,
     IngredienteFormComponent,
     CardapioComponent,
-    CardapioFormComponent
+    CardapioFormComponent,
+    TamanhoMarmitaComponent,
+    TamanhoMarmitaFormComponent
   ],
   imports: [
     BrowserAnimationsModule,

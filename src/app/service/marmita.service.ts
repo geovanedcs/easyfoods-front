@@ -9,6 +9,6 @@ import {HttpClient} from '@angular/common/http';
 export class MarmitaService extends BaseService<TamanhoMarmita> {
 
   constructor(protected http: HttpClient) {
-    super(http, 'marmita');
+    super(http, 'tamanho-marmita');
   }
 }
