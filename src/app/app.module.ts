@@ -17,32 +17,30 @@ import {
 } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
-import { LoginComponent } from './login/login.component';
 import { ComidaFormComponent } from './comida/comida-form/comida-form.component';
-import { LoginFormComponent } from './login/login-form/login-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import { IngredienteComponent } from './ingrediente/ingrediente.component';
 import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.component';
 import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.component';
 import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
+import {HomeModule} from "./home/home.module";
+import {VMessageModule} from "./vmessage/vmessage.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ComidaComponent,
-    LoginComponent,
     ComidaFormComponent,
-    LoginFormComponent,
     IngredienteComponent,
     IngredienteFormComponent,
     CardapioComponent,
     CardapioFormComponent,
     TamanhoMarmitaComponent,
-    TamanhoMarmitaFormComponent
+    TamanhoMarmitaFormComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -61,6 +59,9 @@ import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-f
     FormsModule,
     CheckboxModule,
     MultiSelectModule,
+    HomeModule,
+    ReactiveFormsModule,
+    VMessageModule
   ],
   providers: [MessageService, ConfirmationService, SidebarModule],
   bootstrap: [AppComponent]
