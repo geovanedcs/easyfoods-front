@@ -38,7 +38,7 @@ export class TamanhoMarmitaFormComponent implements OnInit {
         severity: 'success',
         summary: 'Salvo com sucesso!'
       });
-      this.router.navigateByUrl('ingrediente');
+      this.router.navigateByUrl('tamanho-marmita');
     }, erro => {
       this.messageService.add({
         severity: 'error',
