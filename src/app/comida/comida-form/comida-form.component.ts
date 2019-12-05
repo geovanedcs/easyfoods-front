@@ -4,8 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ComidaService} from '../../service/comida.service';
 import {MessageService} from 'primeng';
 import {Ingrediente} from '../../model/ingrediente';
-import {IngredienteService} from "../../service/ingrediente.service";
-import {ComidaIngrediente} from "../../model/comidaIngrediente";
+import {IngredienteService} from '../../service/ingrediente.service';
+import {ComidaIngrediente} from '../../model/comidaIngrediente';
 
 
 @Component({

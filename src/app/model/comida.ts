@@ -1,4 +1,4 @@
-import {ComidaIngrediente} from "./comidaIngrediente";
+import {ComidaIngrediente} from './comidaIngrediente';
 
 export class Comida {
   id: number;
