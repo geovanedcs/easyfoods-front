@@ -9,6 +9,8 @@ import {IngredienteComponent} from './ingrediente/ingrediente.component';
 import {IngredienteFormComponent} from './ingrediente/ingrediente-form/ingrediente-form.component';
 
 
+
+
 const routes: Routes = [
   {
     path: '', component: HomeComponent
@@ -25,6 +27,9 @@ const routes: Routes = [
   {
     path: 'ingrediente/form', component: IngredienteFormComponent
   },
+  // {
+  //   path: 'marmita/form', component: MarmitaFormComponent
+  // },
   {
     path: 'login', component: LoginComponent
   },
