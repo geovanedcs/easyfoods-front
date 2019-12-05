@@ -5,4 +5,5 @@ export class Cardapio {
   cardapio: String;
   inativo: boolean;
   comidaCardapioList?: ComidaCardapio[];
+  //teste
 }
