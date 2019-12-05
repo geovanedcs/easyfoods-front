@@ -10,7 +10,6 @@ import {Title} from '@angular/platform-browser';
 })
 export class CardapioComponent implements OnInit {
   col: any[];
-  objeto: Cardapio;
   lista: Cardapio[];
   loading = false;
 

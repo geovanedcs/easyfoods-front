@@ -1,1 +1,29 @@
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <p-card>
+        <p-table (onLazyLoad)="carregaLista()"
+                 [columns]="col"
+                 [lazy]="true"
+                 [loading]="loading"
+                 [value]="lista">
+          <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let col of col">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template let-columns="columns" let-rowData pTemplate="body">
+            <ng-container>
+              <tr>
+                <td *ngFor="let cardapios of lista">
+                  {{rowData[cardapios?.comidaCardapioList]}}</td>
+              </tr>
+            </ng-container>
+          </ng-template>
+        </p-table>
+      </p-card>
+    </div>
+  </div>
+</div>

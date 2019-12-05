@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Cardapio} from "../../model/cardapio";
-import {ActivatedRoute, Router} from "@angular/router";
-import {CardapioService} from "../../service/cardapio.service";
-import {MessageService} from "primeng";
-import {Comida} from "../../model/comida";
-import {ComidaService} from "../../service/comida.service";
-import {ComidaCardapio} from "../../model/comidaCardapio";
+import {Cardapio} from '../../model/cardapio';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CardapioService} from '../../service/cardapio.service';
+import {MessageService} from 'primeng';
+import {Comida} from '../../model/comida';
+import {ComidaService} from '../../service/comida.service';
+import {ComidaCardapio} from '../../model/comidaCardapio';
 
 @Component({
   selector: 'app-cardapio-form',
@@ -25,18 +25,18 @@ export class CardapioFormComponent implements OnInit {
               private messageService: MessageService) {
     comidaService.findAll().subscribe(comida => {
       this.comidas = comida;
-    })
+    });
   }
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
-      if(params.has('id')) {
+      if (params.has('id')) {
         this.cardapioService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
           this.selectedComidas = [];
           for (const comidaCardapio of this.objeto.comidaCardapioList) {
             this.selectedComidas.push(comidaCardapio.comida);
-          };
+          }
         });
       } else {
         this.resetaForm();
@@ -68,7 +68,7 @@ export class CardapioFormComponent implements OnInit {
   }
 
   private resetaForm(): void {
-    this.objeto = new Cardapio()
+    this.objeto = new Cardapio();
     this.objeto.cardapio = '';
   }
 

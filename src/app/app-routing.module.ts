@@ -11,6 +11,7 @@ import {CardapioComponent} from './cardapio/cardapio.component';
 import {CardapioFormComponent} from './cardapio/cardapio-form/cardapio-form.component';
 import {TamanhoMarmitaComponent} from './tamanho-marmita/tamanho-marmita.component';
 import {TamanhoMarmitaFormComponent} from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
+import {CadastroComponent} from './cadastro/cadastro.component';
 
 
 
@@ -47,7 +48,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'login/form', component: LoginFormComponent
+    path: 'cadastro', component: CadastroComponent
   }
 ];
 

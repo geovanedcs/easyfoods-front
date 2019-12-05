@@ -12,7 +12,7 @@ import {MarmitaService} from '../../service/marmita.service';
 })
 export class TamanhoMarmitaFormComponent implements OnInit {
   objeto: TamanhoMarmita;
-  checked = false;
+  checked: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private marmitaService: MarmitaService,
