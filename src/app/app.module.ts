@@ -18,7 +18,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
 import { ComidaFormComponent } from './comida/comida-form/comida-form.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { IngredienteComponent } from './ingrediente/ingrediente.component';
 import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -28,6 +28,7 @@ import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.compo
 import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
 import {HomeModule} from "./home/home.module";
 import {VMessageModule} from "./vmessage/vmessage.module";
+import {TokenInterceptor} from "./auth/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -63,7 +64,11 @@ import {VMessageModule} from "./vmessage/vmessage.module";
     ReactiveFormsModule,
     VMessageModule
   ],
-  providers: [MessageService, ConfirmationService, SidebarModule],
-  bootstrap: [AppComponent]
+  providers: [MessageService, ConfirmationService, SidebarModule, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
+  bootstrap: [AppComponent, ]
 })
 export class AppModule { }

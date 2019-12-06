@@ -9,11 +9,12 @@ import {CardapioFormComponent} from './cardapio/cardapio-form/cardapio-form.comp
 import {TamanhoMarmitaComponent} from './tamanho-marmita/tamanho-marmita.component';
 import {TamanhoMarmitaFormComponent} from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
 import {SigninComponent} from "./home/signin/signin.component";
+import {AuthGuard} from "./auth/auth-guard";
 
 
 const routes: Routes = [
   {
-    path: '', component: SigninComponent
+    path: '', component: SigninComponent, canActivate: [AuthGuard]
   },
   {
     path: 'comida', component: ComidaComponent
