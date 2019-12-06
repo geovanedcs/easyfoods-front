@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
@@ -31,11 +31,12 @@ export class SigninComponent implements OnInit {
     this.authService
       .authenticate(cpf, password)
       .subscribe(
-        () => this.router.navigate(['user', cpf]),
+        () => this.router.navigate(['cpf', cpf]),
         err => {
           console.log(err);
           this.loginForm.reset();
+          alert('Invalid user name or password');
         }
-      )
+      );
   }
 }
