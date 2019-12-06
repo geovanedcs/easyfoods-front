@@ -12,7 +12,7 @@ import {MarmitaService} from '../../service/marmita.service';
 })
 export class TamanhoMarmitaFormComponent implements OnInit {
   objeto: TamanhoMarmita;
-  checked: boolean = false;
+  checked: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
               private marmitaService: MarmitaService,
@@ -24,6 +24,7 @@ export class TamanhoMarmitaFormComponent implements OnInit {
       if (params.has('id')) {
         this.marmitaService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
+          this.checked = this.objeto.inativo;
         });
       } else {
         this.resetaForm();
@@ -32,6 +33,7 @@ export class TamanhoMarmitaFormComponent implements OnInit {
   }
 
   salvar(): void {
+    this.objeto.inativo = this.checked;
     this.marmitaService.save(this.objeto).subscribe(res => {
       this.objeto = res;
       this.messageService.add({
