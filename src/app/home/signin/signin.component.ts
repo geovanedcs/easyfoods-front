@@ -35,7 +35,7 @@ export class SigninComponent implements OnInit {
       .authenticate(cpf, senha)
       .subscribe(
         res => {
-          this.router.navigate(['']);
+          this.router.navigate(['cardapio']);
           this.userService.setToken(res.token);
         },
         err => {
