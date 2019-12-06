@@ -16,7 +16,7 @@ export class CardapioFormComponent implements OnInit {
   objeto: Cardapio;
   comidas: Comida[];
   selectedComidas: Comida[];
-  checked = false;
+  checked: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
               private cardapioService: CardapioService,
@@ -33,6 +33,7 @@ export class CardapioFormComponent implements OnInit {
       if (params.has('id')) {
         this.cardapioService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
+          this.checked = this.objeto.inativo;
           this.selectedComidas = [];
           for (const comidaCardapio of this.objeto.comidaCardapioList) {
             this.selectedComidas.push(comidaCardapio.comida);
@@ -46,6 +47,7 @@ export class CardapioFormComponent implements OnInit {
 
   salvar(): void {
     this.objeto.comidaCardapioList = [];
+    this.objeto.inativo = this.checked;
     for (const comida of this.selectedComidas) {
       const comidaCardapio = new ComidaCardapio();
       comidaCardapio.comida = comida;

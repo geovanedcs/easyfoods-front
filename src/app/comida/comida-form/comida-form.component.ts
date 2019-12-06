@@ -17,6 +17,7 @@ export class ComidaFormComponent implements OnInit {
   objeto: Comida;
   ingredientes: Ingrediente[];
   selectedIngredientes: Ingrediente[] = [];
+  checked: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
               private comidaService: ComidaService,
@@ -33,6 +34,7 @@ export class ComidaFormComponent implements OnInit {
       if (params.has('id')) {
         this.comidaService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
+          this.checked = this.objeto.inativo;
           this.selectedIngredientes = [];
           for (const comidaIngrediente of this.objeto.ingredienteList) {
             this.selectedIngredientes.push(comidaIngrediente.ingrediente);
@@ -46,6 +48,7 @@ export class ComidaFormComponent implements OnInit {
 
   salvar(): void {
     this.objeto.ingredienteList = [];
+    this.objeto.inativo = this.checked;
     for (const ingrediente of this.selectedIngredientes) {
       const comidaIngrediente = new ComidaIngrediente();
       comidaIngrediente.ingrediente = ingrediente;
