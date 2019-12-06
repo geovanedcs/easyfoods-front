@@ -10,19 +10,19 @@
       autofocus>
     <app-vmessage
       *ngIf="loginForm.get('cpf').errors?.required"
-      text="CPF is required!">
+      text="Um cpf é requerido!">
     </app-vmessage>
   </div>
 
   <div class="form-group">
     <input
-      formControlName="password"
+      formControlName="senha"
       type="password"
       class="form-control"
-      placeholder="password">
+      placeholder="senha">
     <app-vmessage
-      *ngIf="loginForm.get('password').errors?.required"
-      text="Password is required!">
+      *ngIf="loginForm.get('senha').errors?.required"
+      text="Uma senha é requerida!">
     </app-vmessage>
   </div>
 

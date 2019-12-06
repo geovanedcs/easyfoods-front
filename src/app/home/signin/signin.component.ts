@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
+import {TokenService} from "../../service/token.service";
 
 @Component({
   selector: 'app-signin',
@@ -14,28 +15,32 @@ export class SigninComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
+              private tokenService: TokenService,
               private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       cpf: ['', Validators.required],
-      password: ['', Validators.required]
+      senha: ['', Validators.required]
     });
   }
 
   login() {
     const cpf = this.loginForm.get('cpf').value;
-    const password = this.loginForm.get('password').value;
+    const senha = this.loginForm.get('senha').value;
 
     this.authService
-      .authenticate(cpf, password)
+      .authenticate(cpf, senha)
       .subscribe(
-        () => this.router.navigate(['cpf', cpf]),
+        res => {
+          this.router.navigate(['']);
+          this.tokenService.setToken(res.token);
+        },
         err => {
           console.log(err);
           this.loginForm.reset();
-          alert('Invalid user name or password');
+          alert('Dados de login inválidos.');
         }
       );
   }
