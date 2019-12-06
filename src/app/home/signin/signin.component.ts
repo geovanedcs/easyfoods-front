@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
 import {TokenService} from "../../service/token.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +16,7 @@ export class SigninComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private tokenService: TokenService,
+              private userService: UserService,
               private router: Router
   ) { }
 
@@ -35,7 +36,7 @@ export class SigninComponent implements OnInit {
       .subscribe(
         res => {
           this.router.navigate(['']);
-          this.tokenService.setToken(res.token);
+          this.userService.setToken(res.token);
         },
         err => {
           console.log(err);

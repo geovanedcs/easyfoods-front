@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {ApiResposta} from '../model/apiResposta';
 import {Observable} from "rxjs";
+import {UserService} from "./user.service";
 
 const API_URL = 'http://localhost:8080/';
 
