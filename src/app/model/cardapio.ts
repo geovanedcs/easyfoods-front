@@ -1,8 +1,8 @@
-import {ComidaCardapio} from "./comidaCardapio";
+import {ComidaCardapio} from './comidaCardapio';
 
 export class Cardapio {
   id: number;
-  cardapio: String;
+  cardapio: string;
   inativo: boolean;
   comidaCardapioList?: ComidaCardapio[];
 }

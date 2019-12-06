@@ -9,16 +9,16 @@
                  [value]="lista">
           <ng-template pTemplate="header">
             <tr>
-              <th *ngFor="let col of col">
-                {{col.header}}
+              <th *ngFor="let cols of col">
+                {{cols.header}}
               </th>
             </tr>
           </ng-template>
-          <ng-template let-columns="columns" let-rowData pTemplate="body">
-            <ng-container>
+          <ng-template pTemplate="body">
+            <ng-container *ngFor="let cardapios of lista">
               <tr>
-                <td *ngFor="let cardapios of lista">
-                  {{rowData[cardapios?.comidaCardapioList]}}</td>
+                <td *ngFor="let itemList of cardapios.comidaCardapioList">
+                  {{itemList.cardapio.comida.nome}}</td>
               </tr>
             </ng-container>
           </ng-template>
