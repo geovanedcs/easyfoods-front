@@ -21,13 +21,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.sidebarService.setMostrar(false);
-    routerLink: 'logout',
-      visible: this.isLogado,
-      command: () => {
-      this.abrirFecharMenu();
-    }
-  }
-];
   }
 
   abrirFecharMenu() {
@@ -61,6 +54,7 @@ export class AppComponent implements OnInit {
       {
         label: 'Login',
         routerLink: 'login',
+        icon: 'fas fa-sign-in-alt',
         visible: !this.isLogado,
         command: () => {
           this.abrirFecharMenu();
@@ -68,10 +62,13 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'Sair',
-        routerLink: '',
+        routerLink: 'logout',
         icon: 'fas fa-sign-out-alt',
+        visible: this.isLogado,
+        command: () => {
+          this.abrirFecharMenu();
+        }
       }
-    ];
+    ]
   }
-
 }

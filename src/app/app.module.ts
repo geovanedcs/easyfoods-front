@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {
   ButtonModule,
-  CardModule, CheckboxModule, ConfirmationService,
+  CardModule, CarouselModule, CheckboxModule, ConfirmationService,
   ConfirmDialogModule,
   MenuModule,
   MessageModule, MessageService, MultiSelectModule,
@@ -66,7 +66,8 @@ import { SignoutComponent } from './auth/signout/signout.component';
     MultiSelectModule,
     HomeModule,
     ReactiveFormsModule,
-    VMessageModule
+    VMessageModule,
+    CarouselModule,
   ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,
