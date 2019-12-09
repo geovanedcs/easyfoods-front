@@ -43,11 +43,8 @@ export class TokenInterceptor implements HttpInterceptor {
         tap(() => {
         }, err => {
           if (err.status === 403) {
-            this.router.navigate(['/401']).catch(reason => console.log(reason));
+            this.router.navigate(['/logout']);
           }
-          // else if (err.status === 401) {
-          //   // this.loginService.loggout();
-          // }
         })
       );
     }

@@ -25,45 +25,46 @@ const routes: Routes = [
     path: 'login', component: SigninComponent
   },
   {
-    path: 'comida', component: ComidaComponent
+    path: 'comida', component: ComidaComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'comida/form', component: ComidaFormComponent
+    path: 'comida/form', component: ComidaFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'ingrediente', component: IngredienteComponent
+    path: 'ingrediente', component: IngredienteComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'ingrediente/form', component: IngredienteFormComponent
+    path: 'ingrediente/form', component: IngredienteFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'pedido', component: PedidoComponent
+    path: 'pedido', component: PedidoComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'pedido/form', component: PedidoFormComponent
+    path: 'pedido/form', component: PedidoFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tamanho-marmita', component: TamanhoMarmitaComponent
+    path: 'tamanho-marmita', component: TamanhoMarmitaComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tamanho-marmita/form', component: TamanhoMarmitaFormComponent
+    path: 'tamanho-marmita/form', component: TamanhoMarmitaFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cardapio', component: CardapioComponent
+    path: 'cardapio', component: CardapioComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cardapio/form', component: CardapioFormComponent
+    path: 'cardapio/form', component: CardapioFormComponent, canActivate: [AuthGuard]
   },
   {
     path: 'cadastro', component: CadastroComponent
   },
   {
-    path: 'logout', component: SignoutComponent
+    path: 'logout', component: SignoutComponent, canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
