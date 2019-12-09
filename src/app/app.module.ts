@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {
-  ButtonModule,
+  ButtonModule, CalendarModule,
   CardModule, CheckboxModule, ConfirmationService,
-  ConfirmDialogModule, InputTextModule,
+  ConfirmDialogModule, DropdownModule,
   MenuModule,
   MessageModule, MessageService, MultiSelectModule,
   SidebarModule,
@@ -29,10 +29,10 @@ import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-f
 import {HomeModule} from './home/home.module';
 import {VMessageModule} from './vmessage/vmessage.module';
 import {TokenInterceptor} from './auth/token.interceptor';
-import {CadastroComponent} from './auth/cadastro/cadastro.component';
+import {CadastroComponent} from "./auth/cadastro/cadastro.component";
 import { SignoutComponent } from './auth/signout/signout.component';
-import {NgxMaskModule} from 'ngx-mask';
-
+import { PedidoComponent } from './pedido/pedido.component';
+import { PedidoFormComponent } from './pedido/pedido-form/pedido-form.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,8 @@ import {NgxMaskModule} from 'ngx-mask';
     TamanhoMarmitaFormComponent,
     CadastroComponent,
     SignoutComponent,
+    PedidoComponent,
+    PedidoFormComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -69,8 +71,8 @@ import {NgxMaskModule} from 'ngx-mask';
     HomeModule,
     ReactiveFormsModule,
     VMessageModule,
-    InputTextModule,
-    NgxMaskModule.forRoot(),
+    DropdownModule,
+    CalendarModule
   ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,
