@@ -10,14 +10,18 @@ import {TamanhoMarmitaComponent} from './tamanho-marmita/tamanho-marmita.compone
 import {TamanhoMarmitaFormComponent} from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
 import {SigninComponent} from "./home/signin/signin.component";
 import {AuthGuard} from "./auth/auth-guard";
+import {HomeComponent} from "./home/home.component";
 
 
 const routes: Routes = [
   {
-    path: '', component: SigninComponent, canActivate: [AuthGuard]
+    path: '', component: HomeComponent
   },
   {
-    path: 'comida', component: ComidaComponent
+    path: 'login', component: SigninComponent
+  },
+  {
+    path: 'comida', component: ComidaComponent, canActivate: [AuthGuard]
   },
   {
     path: 'comida/form', component: ComidaFormComponent

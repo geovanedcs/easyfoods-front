@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {TokenService} from "./token.service";
-import {BehaviorSubject} from "rxjs";
-import {Sujeito} from "../model/sujeito";
+import {TokenService} from './token.service';
+import {BehaviorSubject} from 'rxjs';
+import {Sujeito} from '../model/sujeito';
 import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -36,6 +36,7 @@ export class UserService {
   logout() {
     this.tokenService.removeToken();
     this.userSubject.next(null);
+    // TODO redirecionar usuario para pagina
   }
 
   getUser() {

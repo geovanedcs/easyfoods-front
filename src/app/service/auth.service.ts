@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ApiResposta} from '../model/apiResposta';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 const API_URL = 'http://localhost:8080/';
 

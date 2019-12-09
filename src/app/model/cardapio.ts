@@ -6,5 +6,4 @@ export class Cardapio {
   idDia: number;
   inativo: boolean;
   comidaCardapioList?: ComidaCardapio[];
-  //teste
 }
