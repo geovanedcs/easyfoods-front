@@ -1,0 +1,38 @@
+<h4 class="text-center">Login</h4>
+
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
+
+  <div class="form-group">
+    <input #cpfInput
+      formControlName="cpf"
+      class="form-control"
+      placeholder="Cpf"
+      autofocus>
+    <app-vmessage
+      *ngIf="loginForm.get('cpf').errors?.required"
+      text="Um cpf é requerido!">
+    </app-vmessage>
+  </div>
+
+  <div class="form-group">
+    <input
+      formControlName="senha"
+      type="password"
+      class="form-control"
+      placeholder="senha">
+    <app-vmessage
+      *ngIf="loginForm.get('senha').errors?.required"
+      text="Uma senha é requerida!">
+    </app-vmessage>
+  </div>
+
+  <button
+    [disabled]="loginForm.invalid"
+    type="submit"
+    class="btn btn-primary btn-block">
+    login
+  </button>
+
+</form>
+
+<p>Not a user?<a>Register now</a></p>
