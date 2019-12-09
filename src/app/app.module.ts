@@ -29,7 +29,9 @@ import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.co
 import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.component';
 import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { NgxMaskModule } from 'ngx-mask';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>);
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
         MultiSelectModule,
         InputTextModule,
         InputMaskModule,
+        NgxMaskModule.forRoot(options),
     ],
   providers: [MessageService, ConfirmationService, SidebarModule],
   bootstrap: [AppComponent]
