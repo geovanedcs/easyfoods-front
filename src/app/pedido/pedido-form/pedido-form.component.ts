@@ -41,9 +41,10 @@ export class PedidoFormComponent implements OnInit {
   salvar(): void {
     this.pedidoService.save(this.objeto).subscribe(res => {
       this.objeto = res;
+      console.log(this.objeto);
       this.messageService.add({
         severity: 'success',
-        summary: 'Salvo com sucesso!'
+        summary: 'Salvo com sucesso!',
       });
       this.router.navigateByUrl('pedido');
     }, erro => {
