@@ -8,6 +8,9 @@ import {
   ButtonModule,
   CardModule, CarouselModule, CheckboxModule, ConfirmationService,
   ConfirmDialogModule,
+  ButtonModule, CalendarModule,
+  CardModule, CheckboxModule, ConfirmationService,
+  ConfirmDialogModule, DropdownModule,
   MenuModule,
   MessageModule, MessageService, MultiSelectModule,
   SidebarModule,
@@ -68,6 +71,9 @@ import { SignoutComponent } from './auth/signout/signout.component';
     ReactiveFormsModule,
     VMessageModule,
     CarouselModule,
+    VMessageModule,
+    DropdownModule,
+    CalendarModule
   ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,

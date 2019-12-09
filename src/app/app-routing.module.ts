@@ -13,6 +13,8 @@ import {AuthGuard} from './auth/auth-guard';
 import {HomeComponent} from './home/home.component';
 import {CadastroComponent} from './auth/cadastro/cadastro.component';
 import {SignoutComponent} from './auth/signout/signout.component';
+import {PedidoComponent} from "./pedido/pedido.component";
+import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 
 
 const routes: Routes = [
@@ -23,39 +25,46 @@ const routes: Routes = [
     path: 'login', component: SigninComponent
   },
   {
-    path: 'comida', component: ComidaComponent
+    path: 'comida', component: ComidaComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'comida/form', component: ComidaFormComponent
+    path: 'comida/form', component: ComidaFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'ingrediente', component: IngredienteComponent
+    path: 'ingrediente', component: IngredienteComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'ingrediente/form', component: IngredienteFormComponent
+    path: 'ingrediente/form', component: IngredienteFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tamanho-marmita', component: TamanhoMarmitaComponent
+    path: 'pedido', component: PedidoComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tamanho-marmita/form', component: TamanhoMarmitaFormComponent
+    path: 'pedido/form', component: PedidoFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cardapio', component: CardapioComponent
+    path: 'tamanho-marmita', component: TamanhoMarmitaComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cardapio/form', component: CardapioFormComponent
+    path: 'tamanho-marmita/form', component: TamanhoMarmitaFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'cardapio', component: CardapioComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'cardapio/form', component: CardapioFormComponent, canActivate: [AuthGuard]
   },
   {
     path: 'cadastro', component: CadastroComponent
   },
   {
-    path: 'logout', component: SignoutComponent
+    path: 'logout', component: SignoutComponent, canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

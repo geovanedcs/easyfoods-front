@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <p-card header="Dados do Pedido">
+        <div class="row">
+          <div class="col-12">
+              <span class="ui-float-label my-2">
+                <p-calendar id="dataPedido"
+                            appendTo="body"
+                            [(ngModel)]="objeto.dataPedido"
+                            dateFormat="dd/mm/yy">
+                </p-calendar>
+                <label for="dataPedido">Data do Pedido</label>
+              </span>
+              <span class="ui-float-label my-2">
+                <p-dropdown id="tamanhoMarmita"
+                            [options]="tamanhoMarmitaList"
+                            [(ngModel)]="objeto.tamanhoMarmita"
+                            optionLabel="pesoMarmita">
+                </p-dropdown>
+                <label for="tamanhoMarmita">Tamanho da Marmita</label>
+              </span>
+              <span class="ui-float-label my-2">
+                <input [(ngModel)]="objeto.quantidade"
+                       type="number"
+                       id="quantidade"
+                       pInputText size="30">
+                <label for="quantidade">Quantidade</label>
+              </span>
+          </div>
+        </div>
+        <div class="text-right m-2">
+          <button (click)="salvar()"
+                  class="ui-button-raised"
+                  label="Salvar"
+                  pButton
+                  type="button">
+          </button>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+

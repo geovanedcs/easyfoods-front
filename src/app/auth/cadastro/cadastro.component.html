@@ -1,40 +1,179 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <p-card header="Cadastro">
+      <div class="form-group" header="Cadastro">
         <div class="container">
-          <span class="ui-float-label my-2">
-            <input  type="text" id="nome" pInputText size="30" [(ngModel)]="objeto.nome">
-            <label for="nome">Nome</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input matinput mask="000.000.000-00" type="text" id="cpf" pInputText size="30"  [(ngModel)]="objeto.cpf">
-            <label for="cpf">CPF</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input type="text" id="telefone" pInputText size="30" [(ngModel)]="objeto.telefone">
-            <label for="telefone">Telefone</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input type="password" id="senha" pInputText size="30" [(ngModel)]="objeto.senha">
-            <label for="senha">Senha</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input type="text" id="cep" pInputText size="30" [(ngModel)]="objeto.cep">
-            <label for="cep">CEP</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input type="text" id="logradouro" pInputText size="30" [(ngModel)]="objeto.logradouro">
-            <label for="logradouro">Logradouro</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input type="number" id="numero" pInputText size="30" [(ngModel)]="objeto.numero">
-            <label for="numero">Numero</label>
-          </span>
-          <span class="ui-float-label my-2">
-            <input type="text" id="bairro" pInputText size="30" [(ngModel)]="objeto.bairro">
-            <label for="bairro">Bairro</label>
-          </span>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="nome">Nome Completo</label>
+                <input class="form-control"
+                       placeholder="John Doe"
+                       type="text" id="nome"
+                       name="nome"
+                       pInputText size="30"
+                       required minlength="5"
+                       [(ngModel)]="objeto.nome" #nome="ngModel">
+                <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="alert alert-danger">
+                  <div *ngIf="nome.errors.required">
+                    Nome é obrigatório!
+                  </div>
+                  <div *ngIf="nome.errors.minlength">
+                    Nome precisa ter no mínimo 5 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="cpf">CPF</label>
+                <input class="form-control"
+                       placeholder="000.000.000-00"
+                       mask="000.000.000-00"
+                       type="text" id="cpf"
+                       name="cpf"
+                       pInputText size="30"
+                       required minlength="11" [(ngModel)]="objeto.cpf" #cpf="ngModel">
+                <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="alert alert-danger">
+                  <div *ngIf="cpf.errors.required">
+                    CPF é obrigatório!
+                  </div>
+                  <div *ngIf="cpf.errors.minlength">
+                    CPF precisa ter 11 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="telefone">Celular</label>
+                <input class="form-control"
+                       placeholder="(00)00000-0000"
+                       mask="(00)00000-0000"
+                       type="text" id="telefone"
+                       name="telefone"
+                       pInputText size="30"
+                       required minlength="11"
+                       [(ngModel)]="objeto.telefone"
+                       #telefone="ngModel">
+                <div *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)" class="alert alert-danger">
+                  <div *ngIf="telefone.errors.required">
+                    Telefone é obrigatório!
+                  </div>
+                  <div *ngIf="telefone.errors.minlength">
+                    Telefone precisa ter 11 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="senha">Senha</label>
+                <input class="form-control" type="password" id="senha" pInputText size="30" required [(ngModel)]="objeto.senha">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="confirmasenha">Confirme sua Senha</label>
+                <input class="form-control" type="password" id="confirmasenha" pInputText size="30" required [(ngModel)]="objeto.senha">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="cep">CEP</label>
+                <input class="form-control"
+                       placeholder="00.000-000"
+                       mask="00.000-000"
+                       type="text" id="cep"
+                       name="cep"
+                       pInputText size="30"
+                       required minlength="8" [(ngModel)]="objeto.cep" #cep="ngModel">
+                <div *ngIf="cep.invalid && (cep.dirty || cep.touched)" class="alert alert-danger">
+                  <div *ngIf="cep.errors.required">
+                    CEP é obrigatório!
+                  </div>
+                  <div *ngIf="cep.errors.minlength">
+                    CEP precisa ter 8 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="logradouro">Logradouro</label>
+                <input class="form-control"
+                       placeholder="Avenida Tupy"
+                       type="text" id="logradouro"
+                       name="logradouro"
+                       pInputText size="30"
+                       required minlength="5" [(ngModel)]="objeto.logradouro" #logradouro="ngModel">
+                <div *ngIf="logradouro.invalid && (logradouro.dirty || logradouro.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="logradouro.errors.required">
+                    Logradouro é obrigatório!
+                  </div>
+                  <div *ngIf="logradouro.errors.minlength">
+                    Logradouro precisa ter no mínimo 5 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="numero">Numero</label>
+                <input class="form-control"
+                       placeholder="00"
+                       type="number" id="numero"
+                       name="numero"
+                       pInputText size="30"
+                       required minlength="2" [(ngModel)]="objeto.numero" #numero="ngModel">
+                <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" class="alert alert-danger">
+                  <div *ngIf="numero.errors.required">
+                    Número é obrigatório!
+                  </div>
+                  <div *ngIf="numero.errors.minlength">
+                    Número precisa ter no mínimo 2 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="bairro">Bairro</label>
+                <input class="form-control"
+                       placeholder="Centro"
+                       type="text" id="bairro"
+                       name="bairro"
+                       pInputText size="30"
+                       required minlength="5"
+                       [(ngModel)]="objeto.bairro" #bairro="ngModel">
+                <div *ngIf="bairro.invalid && (bairro.dirty || bairro.touched)" class="alert alert-danger">
+                  <div *ngIf="bairro.errors.required">
+                    Bairro é obrigatório!
+                  </div>
+                  <div *ngIf="nome.errors.minlength">
+                    Bairro precisa ter no mínimo 5 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="text-right m-2">
           <button pButton
@@ -43,7 +182,7 @@
                   label="Salvar"
                   class="ui-button-raised"></button>
         </div>
-      </p-card>
+      </div>
     </div>
   </div>
 </div>
