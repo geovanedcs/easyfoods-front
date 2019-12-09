@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'Sair',
-        routerLink: ''
+        routerLink: 'logout'
       }
     ];
   }
