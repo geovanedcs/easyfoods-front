@@ -11,7 +11,7 @@ import {MessageService} from 'primeng';
 })
 export class IngredienteFormComponent implements OnInit {
   objeto: Ingrediente;
-  checked = false;
+  checked: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
               private ingredienteService: IngredienteService,
@@ -23,6 +23,7 @@ export class IngredienteFormComponent implements OnInit {
       if (params.has('id')) {
         this.ingredienteService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
+          this.checked = this.objeto.inativo;
         });
       } else {
         this.resetaForm();
@@ -31,6 +32,7 @@ export class IngredienteFormComponent implements OnInit {
   }
 
   salvar(): void {
+    this.objeto.inativo = this.checked;
     this.ingredienteService.save(this.objeto).subscribe(res => {
       this.objeto = res;
       this.messageService.add({

@@ -16,7 +16,7 @@ export class CardapioComponent implements OnInit {
   constructor(private cardapioService: CardapioService,
               private titleService: Title) {
     this.col = [
-      {field: 'id', header: 'Código'},
+      {field: 'idDia', header: 'Código'},
       {field: 'cardapio', header: 'Cardapio'},
       {field: 'inativo', header: 'Status'},
     ];
