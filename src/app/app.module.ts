@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {
+  CardModule, CarouselModule, CheckboxModule, ConfirmationService,
+  ConfirmDialogModule,
   ButtonModule, CalendarModule,
-  CardModule, CheckboxModule, ConfirmationService,
-  ConfirmDialogModule, DropdownModule,
+  DropdownModule,
   MenuModule,
   MessageModule, MessageService, MultiSelectModule,
   SidebarModule,
@@ -31,8 +32,8 @@ import {VMessageModule} from './vmessage/vmessage.module';
 import {TokenInterceptor} from './auth/token.interceptor';
 import {CadastroComponent} from "./auth/cadastro/cadastro.component";
 import { SignoutComponent } from './auth/signout/signout.component';
-import { PedidoComponent } from './pedido/pedido.component';
-import { PedidoFormComponent } from './pedido/pedido-form/pedido-form.component';
+import {PedidoComponent} from "./pedido/pedido.component";
+import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 
 @NgModule({
   declarations: [
@@ -71,8 +72,9 @@ import { PedidoFormComponent } from './pedido/pedido-form/pedido-form.component'
     HomeModule,
     ReactiveFormsModule,
     VMessageModule,
+    CarouselModule,
+    CalendarModule,
     DropdownModule,
-    CalendarModule
   ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,

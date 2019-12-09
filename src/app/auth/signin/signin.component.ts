@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../service/auth.service";
-import {Router} from "@angular/router";
+import {AuthService} from '../../service/auth.service';
+import {Router} from '@angular/router';
 import {TokenService} from "../../service/token.service";
 import {UserService} from "../../service/user.service";
 
