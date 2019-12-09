@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import {
     ButtonModule,
     CardModule, CheckboxModule, ConfirmationService,
-    ConfirmDialogModule, InputTextModule,
+    ConfirmDialogModule, InputMaskModule, InputTextModule,
     MenuModule,
     MessageModule, MessageService, MultiSelectModule,
     SidebarModule,
@@ -64,6 +64,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
         CheckboxModule,
         MultiSelectModule,
         InputTextModule,
+        InputMaskModule,
     ],
   providers: [MessageService, ConfirmationService, SidebarModule],
   bootstrap: [AppComponent]
