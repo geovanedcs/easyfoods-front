@@ -3,16 +3,14 @@
     <div class="col-12">
       <div class="col-12">
         <div *ngIf="deHoje" class="doDia">
-          <ng-template let-cardapioDia pTemplate="item">
-            {{deHoje.cardapio}}
-          </ng-template>
+          {{deHoje.cardapio}}
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <p-carousel [value]="lista" [numVisible]="3"
+      <p-carousel [value]="lista" [numVisible]="4"
                   [numScroll]="1"
                   [circular]="true"
                   [autoplayInterval]="7000">

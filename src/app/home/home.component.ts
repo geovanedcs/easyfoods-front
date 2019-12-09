@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('EasyFoods');
-    this.dia.getDay();
     this.carregaLista();
 
   }
@@ -32,8 +31,9 @@ export class HomeComponent implements OnInit {
     this.cardapioService.findAll().subscribe(res => {
       this.lista = res;
       for (let item of this.lista) {
-        if ( item.idDia == this.dia.valueOf() ) {
+        if ( item.idDia == this.dia.getDay() ) {
           this.deHoje = item;
+          console.log(this.deHoje);
         }
       }
       setTimeout(() => this.loading = false);
