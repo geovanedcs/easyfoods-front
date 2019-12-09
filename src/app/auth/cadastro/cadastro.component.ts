@@ -38,7 +38,7 @@ export class CadastroComponent implements OnInit {
         summary: 'Salvo com sucesso!'
       });
 
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('/login');
     }, erro => {
       this.messageService.add({
         severity: 'error',
