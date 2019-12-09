@@ -4,7 +4,7 @@ import {HomeComponent} from './home.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {VMessageModule} from '../vmessage/vmessage.module';
-import {SigninComponent} from './signin/signin.component';
+import {SigninComponent} from '../auth/signin/signin.component';
 import {RouterModule} from '@angular/router';
 
 @NgModule({

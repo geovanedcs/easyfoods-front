@@ -36,7 +36,6 @@ export class UserService {
   logout() {
     this.tokenService.removeToken();
     this.userSubject.next(null);
-    // TODO redirecionar usuario para pagina
   }
 
   getUser() {

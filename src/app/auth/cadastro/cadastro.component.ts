@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Cliente} from '../model/cliente';
+import {Cliente} from '../../model/cliente';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ClienteService} from '../service/cliente.service';
+import {ClienteService} from '../../service/cliente.service';
 import {MessageService} from 'primeng';
 
 @Component({
