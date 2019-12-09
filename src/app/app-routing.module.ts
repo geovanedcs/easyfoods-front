@@ -8,11 +8,11 @@ import {CardapioComponent} from './cardapio/cardapio.component';
 import {CardapioFormComponent} from './cardapio/cardapio-form/cardapio-form.component';
 import {TamanhoMarmitaComponent} from './tamanho-marmita/tamanho-marmita.component';
 import {TamanhoMarmitaFormComponent} from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
-import {SigninComponent} from "./auth/signin/signin.component";
-import {AuthGuard} from "./auth/auth-guard";
-import {HomeComponent} from "./home/home.component";
-import {CadastroComponent} from "./auth/cadastro/cadastro.component";
-import {SignoutComponent} from "./auth/signout/signout.component";
+import {SigninComponent} from './auth/signin/signin.component';
+import {AuthGuard} from './auth/auth-guard';
+import {HomeComponent} from './home/home.component';
+import {CadastroComponent} from './auth/cadastro/cadastro.component';
+import {SignoutComponent} from './auth/signout/signout.component';
 
 
 const routes: Routes = [
