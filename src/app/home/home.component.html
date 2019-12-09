@@ -3,7 +3,10 @@
     <div class="col-12">
       <div class="col-12">
         <div *ngIf="deHoje" class="doDia">
-          {{deHoje.cardapio}}
+          <h3>Cardápio do Dia!</h3>
+          <ul>
+            <li *ngFor="let item of deHoje.comidaCardapioList">{{item.comida.comida}}</li>
+          </ul>
         </div>
       </div>
     </div>
