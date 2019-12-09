@@ -34,26 +34,27 @@ export class AppComponent implements OnInit {
       {
         label: 'Home',
         routerLink: '/',
-        icon: 'pi pi-home'
+        icon: 'pi pi-home',
       },
       {
         label: 'Comidas',
         routerLink: 'comida',
-        icon: 'fas fa-utensils'
+        icon: 'fas fa-utensils',
       },
       {
         label: 'Ingredientes',
         routerLink: 'ingrediente',
-        icon: 'fas fa-utensils'
+        icon: 'fas fa-utensils',
       },
       {
         label: 'Cardápios',
         routerLink: 'cardapio',
-        icon: 'pi pi-list'
+        icon: 'pi pi-list',
       },
       {
         label: 'Login',
         routerLink: 'login',
+        icon: 'fas fa-sign-in-alt',
         visible: !this.isLogado,
         command: () => {
           this.abrirFecharMenu();
@@ -62,11 +63,12 @@ export class AppComponent implements OnInit {
       {
         label: 'Sair',
         routerLink: 'logout',
+        icon: 'fas fa-sign-out-alt',
         visible: this.isLogado,
         command: () => {
           this.abrirFecharMenu();
         }
       }
-    ];
+    ]
   }
 }
