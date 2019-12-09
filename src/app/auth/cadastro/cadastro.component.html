@@ -4,11 +4,11 @@
       <p-card header="Cadastro">
         <div class="container">
           <span class="ui-float-label my-2">
-            <input type="text" id="nome" pInputText size="30" [(ngModel)]="objeto.nome">
+            <input  type="text" id="nome" pInputText size="30" [(ngModel)]="objeto.nome">
             <label for="nome">Nome</label>
           </span>
           <span class="ui-float-label my-2">
-            <input type="text" id="cpf" pInputText size="30" mask="000.000.000-00" [(ngModel)]="objeto.cpf">
+            <input matinput mask="000.000.000-00" type="text" id="cpf" pInputText size="30"  [(ngModel)]="objeto.cpf">
             <label for="cpf">CPF</label>
           </span>
           <span class="ui-float-label my-2">
