@@ -6,7 +6,7 @@ import {MessageService} from 'primeng';
 import {Comida} from '../../model/comida';
 import {ComidaService} from '../../service/comida.service';
 import {ComidaCardapio} from '../../model/comidaCardapio';
-import {Dia} from '../../model/dia';
+
 
 @Component({
   selector: 'app-cardapio-form',
@@ -18,8 +18,6 @@ export class CardapioFormComponent implements OnInit {
   comidas: Comida[];
   selectedComidas: Comida[];
   checked: boolean;
-  // dia: Cardapio[];
-  // selectedDia: Cardapio;
 
   constructor(private activatedRoute: ActivatedRoute,
               private cardapioService: CardapioService,
@@ -29,15 +27,6 @@ export class CardapioFormComponent implements OnInit {
     comidaService.findAll().subscribe(comida => {
       this.comidas = comida;
     });
-    // this.dia = [
-    //   {cardapio: 'Domingo', idDia: 0},
-    //   {cardapio: 'Segunda-Feira', idDia: 1},
-    //   {cardapio: 'Terça-Feira', idDia: 2},
-    //   {cardapio: 'Quarta-Feira', idDia: 3},
-    //   {cardapio: 'Quinta-Feira', idDia: 4},
-    //   {cardapio: 'Sexta-Feira', idDia: 5},
-    //   {cardapio: 'Sabado', idDia: 6}
-    // ];
   }
 
   ngOnInit() {
