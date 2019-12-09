@@ -7,7 +7,7 @@
             <div class="row">
               <div class="col-3">
                 <label for="nome">Nome Completo</label>
-                <input class="form-control" placeholder="John Doe" type="text" id="nome" pInputText size="30" [(ngModel)]="objeto.nome">
+                <input class="form-control" placeholder="John Doe" type="text" id="nome" pInputText size="30" required [(ngModel)]="objeto.nome">
               </div>
             </div>
           </div>
@@ -15,7 +15,7 @@
             <div class="row">
               <div class="col-3">
                 <label for="cpf">CPF</label>
-                <input class="form-control" placeholder="000.000.000-00" mask="000.000.000-00" type="text" id="cpf" pInputText size="30"  [(ngModel)]="objeto.cpf">
+                <input class="form-control" placeholder="000.000.000-00" mask="000.000.000-00" type="text" id="cpf" pInputText size="30" required [(ngModel)]="objeto.cpf">
               </div>
             </div>
           </div>
@@ -23,7 +23,7 @@
             <div class="row">
               <div class="col-3">
                 <label for="telefone">Celular</label>
-                <input class="form-control" placeholder="(00)00000-0000" mask="(00)00000-0000" type="text" id="telefone" pInputText size="30" [(ngModel)]="objeto.telefone">
+                <input class="form-control" placeholder="(00)00000-0000" mask="(00)00000-0000" type="text" id="telefone" pInputText size="30" required [(ngModel)]="objeto.telefone">
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@
             <div class="row">
               <div class="col-3">
                 <label for="senha">Senha</label>
-                <input class="form-control" type="password" id="senha" pInputText size="30" [(ngModel)]="objeto.senha">
+                <input class="form-control" type="password" id="senha" pInputText size="30" required [(ngModel)]="objeto.senha">
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-3">
                 <label for="cep">CEP</label>
-                <input class="form-control" placeholder="00.000-000" mask="00.000-000" type="text" id="cep" pInputText size="30" [(ngModel)]="objeto.cep">
+                <input class="form-control" placeholder="00.000-000" mask="00.000-000" type="text" id="cep" pInputText size="30" required [(ngModel)]="objeto.cep">
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
             <div class="row">
               <div class="col-3">
                 <label for="logradouro">Logradouro</label>
-                <input class="form-control" placeholder="Avenida Tupy" type="text" id="logradouro" pInputText size="30" [(ngModel)]="objeto.logradouro">
+                <input class="form-control" placeholder="Avenida Tupy" type="text" id="logradouro" pInputText size="30" required [(ngModel)]="objeto.logradouro">
               </div>
             </div>
           </div>
@@ -55,14 +55,18 @@
             <div class="row">
               <div class="col-3">
                 <label for="numero">Numero</label>
-                <input class="form-control" placeholder="00" type="number" id="numero" pInputText size="30" [(ngModel)]="objeto.numero">
+                <input class="form-control" placeholder="00" type="number" id="numero" pInputText size="30" required [(ngModel)]="objeto.numero">
               </div>
             </div>
           </div>
-          <span >
-            <input type="text" id="bairro" pInputText size="30" [(ngModel)]="objeto.bairro">
-            <label for="bairro">Bairro</label>
-          </span>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-3">
+                <label for="bairro">Bairro</label>
+                <input class="form-control" placeholder="Centro" type="text" id="bairro" pInputText size="30" required [(ngModel)]="objeto.bairro">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="text-right m-2">
           <button pButton
