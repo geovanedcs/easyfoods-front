@@ -1,31 +1,30 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-12">
-      <p-card>
         <p-table (onLazyLoad)="carregaLista()"
                  [columns]="col"
                  [lazy]="true"
                  [loading]="loading"
                  [value]="lista">
           <ng-template pTemplate="header">
-            <ng-container *ngFor="let cardapios of lista; let cols of col">
-              <tr>
-                <th *ngIf="cols.field === cardapios.id0">
-                  {{cols.header}}
-                </th>
-              </tr>
-            </ng-container>
+            <tr>
+              <th *ngFor="let cols of col">
+                {{cols.header}}
+              </th>
+            </tr>
           </ng-template>
           <ng-template pTemplate="body">
-            <ng-container *ngFor="let cardapios of lista; let cols of col">
-              <tr *ngIf="cols.field === cardapios.id">
-                <td *ngFor="let cardapiodia of cardapios.comidaCardapioList">
-                  {{cardapiodia?.comida}}</td>
+            <ng-container *ngFor="let cardapio of lista">
+              <tr>
+                <td>
+                  <ng-container *ngFor="let itemList of cardapio.comidaCardapioList">
+                    <span>{{itemList.comida.comida}}, </span>
+                  </ng-container>
+                </td>
               </tr>
             </ng-container>
           </ng-template>
         </p-table>
-      </p-card>
     </div>
   </div>
 </div>
