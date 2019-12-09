@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import {
   ButtonModule,
   CardModule, CheckboxModule, ConfirmationService,
-  ConfirmDialogModule,
+  ConfirmDialogModule, InputTextModule,
   MenuModule,
   MessageModule, MessageService, MultiSelectModule,
   SidebarModule,
@@ -29,8 +29,10 @@ import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-f
 import {HomeModule} from './home/home.module';
 import {VMessageModule} from './vmessage/vmessage.module';
 import {TokenInterceptor} from './auth/token.interceptor';
-import {CadastroComponent} from "./auth/cadastro/cadastro.component";
+import {CadastroComponent} from './auth/cadastro/cadastro.component';
 import { SignoutComponent } from './auth/signout/signout.component';
+import {NgxMaskModule} from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { SignoutComponent } from './auth/signout/signout.component';
     MultiSelectModule,
     HomeModule,
     ReactiveFormsModule,
-    VMessageModule
+    VMessageModule,
+    InputTextModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,
