@@ -18,26 +18,27 @@ export class AppComponent implements OnInit {
       {
         label: 'Home',
         routerLink: '/',
-        icon: 'pi pi-home'
+        icon: 'pi pi-home',
       },
       {
         label: 'Comidas',
         routerLink: 'comida',
-        icon: 'fas fa-utensils'
+        icon: 'fas fa-utensils',
       },
       {
         label: 'Ingredientes',
         routerLink: 'ingrediente',
-        icon: 'fas fa-utensils'
+        icon: 'fas fa-utensils',
       },
       {
         label: 'Cardápios',
         routerLink: 'cardapio',
-        icon: 'pi pi-list'
+        icon: 'pi pi-list',
       },
       {
         label: 'Sair',
-        routerLink: ''
+        routerLink: '',
+        icon: 'fas fa-sign-out-alt',
       }
     ];
   }
