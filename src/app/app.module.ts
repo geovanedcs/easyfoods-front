@@ -26,9 +26,9 @@ import { CardapioComponent } from './cardapio/cardapio.component';
 import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.component';
 import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.component';
 import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
-import {HomeModule} from "./home/home.module";
-import {VMessageModule} from "./vmessage/vmessage.module";
-import {TokenInterceptor} from "./auth/token.interceptor";
+import {HomeModule} from './home/home.module';
+import {VMessageModule} from './vmessage/vmessage.module';
+import {TokenInterceptor} from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
