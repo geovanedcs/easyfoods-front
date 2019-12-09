@@ -1,8 +1,29 @@
-<p-toast></p-toast>
-<p-sidebar styleClass="b-gradient" [style]="{width: '230px'}" [(visible)]="displaySidebar">
-  <p-menu styleClass="b-gradient" [model]="menuList"></p-menu>
-</p-sidebar>
-<div class="menubar b-gradient">
-  <i pTooltip="Menu" class="fas fa-bars" size="10px" (click)="abrirFecharMenu()"></i>
+<div class="corpo">
+  <!--  INÍCIO TOPO-->
+  <div class="topo">
+    <div class="row">
+      <div class="col-3">
+        <div class="menubar b-gradient">
+          <i pTooltip="Menu" class="fas fa-bars" (click)="abrirFecharMenu()"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  FIM TOPO-->
+  <!--  INÍCIO CORPO PRINCIPAL-->
+  <div class="divPrincipal">
+    <p-sidebar styleClass="b-gradient" [showCloseIcon]="false" class="sidebarMenu" [(visible)]="displaySidebar">
+      <p-menu styleClass="b-gradient" [model]="menuList"></p-menu>
+    </p-sidebar>
+    <div class="container conteudo mt-3">
+      <p-toast></p-toast>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!--  FIM CORPO PRINCIPAL-->
+  <!--  INÍCIO RODAPÉ-->
+  <div class="rodape">
+
+  </div>
+  <!--  FIM RODAPÉ-->
 </div>
-  <router-outlet></router-outlet>

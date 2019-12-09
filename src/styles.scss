@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #46b3e6!important;
+}
+
+.topo {
+  background-color: #413c98;
+  padding: 1em 1em;
+}
+
+.divPrincipal {
+}
+
+.conteudo {
+  background-color: #edf1f0;
+  border-radius: .35em;
+  padding: 2em;
+}
+
+.fa-bars {
+  color: white;
+}
+
+.sidebarMenu {
+  width: auto;
+  padding: 0;
+  & .ui-menu{
+    border: none;
+  }
+}
