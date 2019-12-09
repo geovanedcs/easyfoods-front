@@ -1,9 +1,9 @@
 import {ComidaCardapio} from './comidaCardapio';
 
 export class Cardapio {
-  id: number;
+  id?: number;
   cardapio: string;
   idDia: number;
-  inativo: boolean;
+  inativo?: boolean;
   comidaCardapioList?: ComidaCardapio[];
 }
