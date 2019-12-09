@@ -1,5 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 export class SidebarService implements OnDestroy {
   private topicoMostrarSidebar = new BehaviorSubject<boolean>(true);
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   getMostrar$(): Observable<boolean> {
@@ -20,6 +21,10 @@ export class SidebarService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.topicoMostrarSidebar.unsubscribe();
+  }
+
+  CheckLogado(): boolean {
+    return this.userService.isLogged();
   }
 }
 

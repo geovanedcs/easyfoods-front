@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'login', component: SigninComponent
   },
   {
-    path: 'comida', component: ComidaComponent, canActivate: [AuthGuard]
+    path: 'comida', component: ComidaComponent
   },
   {
     path: 'comida/form', component: ComidaFormComponent
