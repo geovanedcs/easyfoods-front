@@ -13,6 +13,8 @@ import {AuthGuard} from './auth/auth-guard';
 import {HomeComponent} from './home/home.component';
 import {CadastroComponent} from './auth/cadastro/cadastro.component';
 import {SignoutComponent} from './auth/signout/signout.component';
+import {PedidoComponent} from "./pedido/pedido.component";
+import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 
 
 const routes: Routes = [
@@ -33,6 +35,12 @@ const routes: Routes = [
   },
   {
     path: 'ingrediente/form', component: IngredienteFormComponent
+  },
+  {
+    path: 'pedido', component: PedidoComponent
+  },
+  {
+    path: 'pedido/form', component: PedidoFormComponent
   },
   {
     path: 'tamanho-marmita', component: TamanhoMarmitaComponent
