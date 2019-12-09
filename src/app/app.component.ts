@@ -34,6 +34,10 @@ export class AppComponent implements OnInit {
         label: 'Cardápios',
         routerLink: 'cardapio',
         icon: 'pi pi-list'
+      },
+      {
+        label: 'Sair',
+        routerLink: ''
       }
     ];
   }

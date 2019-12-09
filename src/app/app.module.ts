@@ -29,6 +29,8 @@ import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-f
 import {HomeModule} from './home/home.module';
 import {VMessageModule} from './vmessage/vmessage.module';
 import {TokenInterceptor} from './auth/token.interceptor';
+import {CadastroComponent} from "./auth/cadastro/cadastro.component";
+import { SignoutComponent } from './auth/signout/signout.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import {TokenInterceptor} from './auth/token.interceptor';
     CardapioFormComponent,
     TamanhoMarmitaComponent,
     TamanhoMarmitaFormComponent,
+    CadastroComponent,
+    SignoutComponent,
   ],
   imports: [
     BrowserAnimationsModule,
