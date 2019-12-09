@@ -11,6 +11,7 @@ import {MessageService} from 'primeng';
 })
 export class CadastroComponent implements OnInit {
   objeto: Cliente;
+  confirmarSenha: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private clienteService: ClienteService,
