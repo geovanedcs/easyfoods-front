@@ -13,8 +13,8 @@ import {AuthGuard} from './auth/auth-guard';
 import {HomeComponent} from './home/home.component';
 import {CadastroComponent} from './auth/cadastro/cadastro.component';
 import {SignoutComponent} from './auth/signout/signout.component';
-import {PedidoComponent} from "./pedido/pedido.component";
-import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
+import {PedidoComponent} from './pedido/pedido.component';
+import {PedidoFormComponent} from './pedido/pedido-form/pedido-form.component';
 import {ClientesComponent} from './auth/clientes/clientes.component';
 
 
