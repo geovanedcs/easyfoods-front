@@ -106,6 +106,7 @@
                        type="password" id="confirmarSenha"
                        name="confirmarSenha"
                        pInputText size="10" required
+                       maxlength="10"
                        [(ngModel)]="confirmarSenha" #confirmarSenhaTeste="ngModel">
                 <div *ngIf="confirmarSenhaTeste.invalid && (confirmarSenhaTeste.dirty || confirmarSenhaTeste.touched)" class="alert alert-danger">
                   <div *ngIf="confirmarSenhaTeste.errors.required">
