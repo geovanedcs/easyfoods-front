@@ -106,9 +106,9 @@
                   <div *ngIf="confirmarSenhaTeste.errors.required">
                     Confirmar senha é obrigatório!
                   </div>
-                  <div *ngIf="confirmarSenhaTeste.value != senha.value">
-                    Senhas divergentes!
-                  </div>
+                </div>
+                <div *ngIf="confirmarSenhaTeste.value != senha.value" class="alert alert-danger">
+                  Senhas divergentes!
                 </div>
               </div>
             </div>
