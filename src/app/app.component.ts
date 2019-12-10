@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MenuItem, SidebarModule} from 'primeng';
 import {SidebarService} from './service/sidebar.service';
 import {UserService} from "./service/user.service";
+import {AuthService} from "./service/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,17 @@ export class AppComponent implements OnInit {
   isLogado: boolean;
   menuList: MenuItem[];
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(private sidebarService: SidebarService, private authService: AuthService, private userUser: UserService) {
     this.isLogado = sidebarService.CheckLogado();
     this.sidebarService.getMostrar$().subscribe(val => this.displaySidebar = val);
     this.renderizaMenu();
   }
   ngOnInit(): void {
     this.sidebarService.setMostrar(false);
+    this.isLogado = this.userUser.isLogged();
+    this.authService.logOn.asObservable().subscribe(res => {
+      this.isLogado = res;
+    });
   }
 
   abrirFecharMenu() {
@@ -56,24 +61,6 @@ export class AppComponent implements OnInit {
         routerLink: 'pedido',
         icon: 'pi pi-id-card',
       },
-      {
-        label: 'Login',
-        routerLink: 'login',
-        icon: 'fas fa-sign-in-alt',
-        visible: !this.isLogado,
-        command: () => {
-          this.abrirFecharMenu();
-        }
-      },
-      {
-        label: 'Sair',
-        routerLink: 'logout',
-        icon: 'fas fa-sign-out-alt',
-        visible: this.isLogado,
-        command: () => {
-          this.abrirFecharMenu();
-        }
-      }
     ]
   }
 }

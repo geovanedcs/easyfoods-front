@@ -14,10 +14,27 @@ export class HomeComponent implements OnInit {
   loading = false;
   deHoje: Cardapio;
   dia = new Date();
+  responsiveOptions;
 
   constructor(private cardapioService: CardapioService,
               private titleService: Title) {
-
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ];
   }
 
   ngOnInit() {

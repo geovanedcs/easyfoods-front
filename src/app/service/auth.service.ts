@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ApiResposta} from '../model/apiResposta';
 import {Observable} from 'rxjs';
@@ -9,6 +9,8 @@ const API_URL = 'http://localhost:8080/';
   providedIn: 'root'
 })
 export class AuthService {
+
+  logOn: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) {
   }

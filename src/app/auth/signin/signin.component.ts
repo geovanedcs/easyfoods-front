@@ -37,8 +37,10 @@ export class SigninComponent implements OnInit {
         res => {
           this.router.navigate(['']);
           this.userService.setToken(res.token);
+          this.authService.logOn.emit(true);
         },
         err => {
+          this.authService.logOn.emit(false);
           console.log(err);
           this.loginForm.reset();
           alert('Dados de login inválidos.');

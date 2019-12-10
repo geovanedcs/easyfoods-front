@@ -1,10 +1,17 @@
 .doDia {
   width: 100%;
-  height: 7em;
-  border-radius: 1em;
-  background-color: #46b3e6;
+  height: 12em;
+  border-radius: .5em;
+  background-image: url("https://www.sierraoaksredding.com/wp-content/uploads/2017/12/gourmet-food-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
   padding-left: 5em;
   margin-bottom: 2em;
+  & span {
+    color: #ffffff !important;
+    font-weight: bold;
+  }
 }
 
 .carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item {
@@ -38,4 +45,36 @@
 }
 .carousel-demo .ui-carousel.ui-carousel-horizontal .ui-carousel-content .ui-carousel-item.ui-carousel-item-end {
   margin-right: 0.6em;
+}
+
+.h4Dia {
+  color: #ffffff;
+  font-family: Roboto,"Open Sans", sans-serif;
+  font-weight: bold;
+  padding-top: .8em;
+}
+
+.listaCardapioDia {
+  color: #ffffff;
+  text-decoration: none;
+  list-style: none;
+  font-weight: bold;
+  padding: 0;
+}
+
+.cardapioCarousel {
+  margin-left: .2em;
+  margin-right: .2em;
+  width: auto;
+  height: 15em;
+  overflow-y: hidden;
+}
+
+.cardapioList {
+  padding: 0;
+  overflow-y: auto;
+  & li {
+    list-style: none;
+    padding: 0;
+  }
 }
