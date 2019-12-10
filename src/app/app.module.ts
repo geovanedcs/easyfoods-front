@@ -14,7 +14,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  TooltipModule
+  TooltipModule, InputTextModule
 } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
@@ -36,6 +36,7 @@ import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 import {NgxMaskModule} from 'ngx-mask';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,32 @@ import {NgxMaskModule} from 'ngx-mask';
     SignoutComponent,
     PedidoComponent,
     PedidoFormComponent,
+  ],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    SidebarModule,
+    ButtonModule,
+    ToastModule,
+    MenuModule,
+    TooltipModule,
+    CardModule,
+    TableModule,
+    ConfirmDialogModule,
+    HttpClientModule,
+    MessageModule,
+    FormsModule,
+    CheckboxModule,
+    MultiSelectModule,
+    HomeModule,
+    ReactiveFormsModule,
+    VMessageModule,
+    CarouselModule,
+    CalendarModule,
+    DropdownModule,
+    NgxMaskModule.forRoot(),
+    InputTextModule,
   ],
     imports: [
         BrowserAnimationsModule,

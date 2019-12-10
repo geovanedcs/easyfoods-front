@@ -81,13 +81,18 @@
                        pInputText size="10" required
                        minlength="6" maxlength="10"
                        [(ngModel)]="objeto.senha"
-                       #senha="ngModel">
+                       #senha="ngModel"
+                       pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W+).*$"
+                       title="A senha deve conter no mínimo 1 número, 1 letra e 1 caracter especial">
                 <div *ngIf="senha.invalid && (senha.dirty || senha.touched)" class="alert alert-danger">
                   <div *ngIf="senha.errors.required">
                     Senha é obrigatória!
                   </div>
                   <div *ngIf="senha.errors.minlength">
                     Senha precisa ter no mínimo 6 caracteres.
+                  </div>
+                  <div *ngIf="senha.errors.pattern">
+                    A senha precisa conter pelo menos 1 letra maiúscula, 1 letra minúscula, 1 número e 1 caracter especial.
                   </div>
                 </div>
               </div>
