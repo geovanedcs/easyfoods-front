@@ -9,7 +9,13 @@
       </div>
       <div class="col-4">
         <div class="text-center">
-          <img src="https://i.ibb.co/vXGvDZ7/logoeasyfoods.png" alt="logoeasyfoods" class="logoPrincipal">
+          <a routerLink=""><img src="https://i.ibb.co/vXGvDZ7/logoeasyfoods.png" alt="logoeasyfoods" class="logoPrincipal"></a>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="pr-2 text-right" >
+          <a class="logInOut" routerLink="login" *ngIf="!this.isLogado" >Login <i class="fas fa-sign-in-alt"></i></a>
+          <a class="logInOut" routerLink="logout" *ngIf="this.isLogado" >Logout <i class="fas fa-sign-out-alt"></i></a>
         </div>
       </div>
     </div>

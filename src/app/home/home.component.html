@@ -4,9 +4,14 @@
       <div class="col-12">
         <div *ngIf="deHoje" class="doDia">
           <h4 class="h4Dia">Cardápio do Dia!</h4>
-          <ul class="listaCardapioDia">
-            <li *ngFor="let item of deHoje.comidaCardapioList">{{item.comida.comida}}</li>
-          </ul>
+          <div class="row">
+            <div class="col-3">
+              <span class="comidasDoDia" *ngFor="let item of deHoje.comidaCardapioList"> - {{item.comida.comida}}</span>
+            </div>
+          </div>
+<!--          <ul class="listaCardapioDia">-->
+<!--            <li ></li>-->
+<!--          </ul>-->
         </div>
       </div>
     </div>

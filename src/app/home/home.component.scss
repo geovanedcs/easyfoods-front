@@ -8,6 +8,10 @@
   background-position: center;
   padding-left: 5em;
   margin-bottom: 2em;
+  & span {
+    color: #ffffff !important;
+    font-weight: bold;
+  }
 }
 
 .carousel-demo .ui-carousel .ui-carousel-content .ui-carousel-item {

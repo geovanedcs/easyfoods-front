@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {TokenService} from './token.service';
 import {BehaviorSubject} from 'rxjs';
 import {Sujeito} from '../model/sujeito';
 import * as jwt_decode from 'jwt-decode';
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
   private userSubject = new BehaviorSubject<Sujeito>(null);
   private userID: number;
 
-  constructor(private tokenService: TokenService) {
+  constructor(private tokenService: TokenService, private authService: AuthService,) {
     this.tokenService.hasToken() &&
     this.decodeAndNotify();
   }
@@ -36,6 +37,7 @@ export class UserService {
   logout() {
     this.tokenService.removeToken();
     this.userSubject.next(null);
+    this.authService.logOn.emit(false);
   }
 
   getUser() {
