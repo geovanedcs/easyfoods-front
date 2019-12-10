@@ -14,7 +14,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  TooltipModule
+  TooltipModule, InputTextModule
 } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
@@ -34,6 +34,7 @@ import {CadastroComponent} from "./auth/cadastro/cadastro.component";
 import { SignoutComponent } from './auth/signout/signout.component';
 import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -75,6 +76,8 @@ import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
     CarouselModule,
     CalendarModule,
     DropdownModule,
+    NgxMaskModule.forRoot(),
+    InputTextModule,
   ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,
