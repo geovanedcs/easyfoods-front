@@ -31,21 +31,64 @@ export class CadastroComponent implements OnInit {
   }
 
   salvar(): void {
-    this.clienteService.save(this.objeto).subscribe(res => {
-      this.objeto = res;
+    if(this.validaCPF(this.objeto.cpf)){
+      this.clienteService.save(this.objeto).subscribe(res => {
+        this.objeto = res;
 
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Salvo com sucesso!'
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Salvo com sucesso!'
+        });
+
+        this.router.navigateByUrl('/login');
+      }, erro => {
+        this.messageService.add({
+          severity: 'error',
+          summary: erro.error.message
+        });
       });
-
-      this.router.navigateByUrl('/login');
-    }, erro => {
+    } else {
       this.messageService.add({
         severity: 'error',
-        summary: erro.error.message
-      });
-    });
+        summary: 'CPF inválido.'
+      })
+    }
+
+  }
+
+  // função validaCPF retirada do site https://www.geradordecpf.org/funcao-javascript-validar-cpf.html
+  validaCPF (cpf) {
+    var numeros, digitos, soma, i, resultado, digitos_iguais;
+    digitos_iguais = 1;
+    if (cpf.length < 11)
+      return false;
+    for (i = 0; i < cpf.length - 1; i++)
+      if (cpf.charAt(i) != cpf.charAt(i + 1))
+      {
+        digitos_iguais = 0;
+        break;
+      }
+    if (!digitos_iguais)
+    {
+      numeros = cpf.substring(0,9);
+      digitos = cpf.substring(9);
+      soma = 0;
+      for (i = 10; i > 1; i--)
+        soma += numeros.charAt(10 - i) * i;
+      resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+      if (resultado != digitos.charAt(0))
+        return false;
+      numeros = cpf.substring(0,10);
+      soma = 0;
+      for (i = 11; i > 1; i--)
+        soma += numeros.charAt(11 - i) * i;
+      resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+      if (resultado != digitos.charAt(1))
+        return false;
+      return true;
+    }
+    else
+      return false;
   }
 
   private resetaForm(): void {
