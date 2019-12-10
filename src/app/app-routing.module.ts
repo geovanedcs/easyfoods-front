@@ -15,6 +15,7 @@ import {CadastroComponent} from './auth/cadastro/cadastro.component';
 import {SignoutComponent} from './auth/signout/signout.component';
 import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
+import {ClientesComponent} from './auth/clientes/clientes.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,9 @@ const routes: Routes = [
   },
   {
     path: 'logout', component: SignoutComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard]
   }
 ];
 

@@ -31,7 +31,7 @@ export class CadastroComponent implements OnInit {
   }
 
   salvar(): void {
-    if(this.validaCPF(this.objeto.cpf)){
+    if (this.validaCPF(this.objeto.cpf)) {
       this.clienteService.save(this.objeto).subscribe(res => {
         this.objeto = res;
 
