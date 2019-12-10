@@ -28,6 +28,12 @@
                 <ng-container *ngIf="col.field == 'tamanhoMarmita'">
                   {{rowData[col.field]?.pesoMarmita}}
                 </ng-container>
+                <ng-container *ngIf="col.field !== 'tamanhoMarmita' && col.field =='cliente'">
+                  {{rowData[col.field?.nome]}}
+                </ng-container>
+                <ng-container *ngIf="col.field !== 'tamanhoMarmita' && col.field == 'vendedor'">
+                  {{rowData[col.field?.nome]}}
+                </ng-container>
                 <ng-container *ngIf="col.field !== 'tamanhoMarmita'">
                   {{rowData[col.field]}}
                 </ng-container>

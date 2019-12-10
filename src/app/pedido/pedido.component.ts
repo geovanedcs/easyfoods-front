@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PedidoService} from "../service/pedido.service";
 import {Title} from "@angular/platform-browser";
 import {Pedido} from "../model/pedido";
+import {Cliente} from "../model/cliente";
 
 @Component({
   selector: 'app-pedido',
@@ -16,7 +17,8 @@ export class PedidoComponent implements OnInit {
   constructor(private pedidoService: PedidoService,
               private titleService: Title) {
     this.col = [
-      {field: 'id', header: 'Código'},
+      {field: 'cliente', header: 'Cliente'},
+      {field: 'vendedor', header: 'Vendedor'},
       {field: 'dataPedido', header: 'Data do Pedido'},
       {field: 'tamanhoMarmita', header: 'Tamanho da Marmita'},
       {field: 'quantidade', header: 'Quantidade'},
@@ -32,7 +34,7 @@ export class PedidoComponent implements OnInit {
     this.pedidoService.findAll().subscribe(res => {
       this.lista = res;
       setTimeout(() => this.loading = false);
-      console.log(res);
+      console.log(this.lista);
     });
   }
 
