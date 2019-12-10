@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit {
       for (let item of this.lista) {
         if ( item.idDia == this.dia.getDay() ) {
           this.deHoje = item;
-          console.log(this.deHoje);
         }
       }
       setTimeout(() => this.loading = false);
