@@ -34,7 +34,9 @@ import {CadastroComponent} from "./auth/cadastro/cadastro.component";
 import { SignoutComponent } from './auth/signout/signout.component';
 import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
-import {NgxMaskModule} from "ngx-mask";
+import {NgxMaskModule} from 'ngx-mask';
+import { ClientesComponent } from './auth/clientes/clientes.component';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import {NgxMaskModule} from "ngx-mask";
     SignoutComponent,
     PedidoComponent,
     PedidoFormComponent,
+    ClientesComponent,
   ],
   imports: [
     BrowserAnimationsModule,
