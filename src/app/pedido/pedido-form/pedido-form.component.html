@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-12">
-      <p-card header="Dados do Pedido">
+    <div class="col-6 pl">
+      <div header="Dados do Pedido">
         <div class="row">
           <div class="col-12">
-              <span class="ui-float-label my-2">
+              <span class="ui-float-label my-3">
                 <p-calendar id="dataPedido"
                             appendTo="body"
                             [(ngModel)]="objeto.dataPedido"
@@ -12,15 +12,17 @@
                 </p-calendar>
                 <label for="dataPedido">Data do Pedido</label>
               </span>
-              <span class="ui-float-label my-2">
+              <span class="ui-float-label my-4">
                 <p-dropdown id="tamanhoMarmita"
+                            autoDisplayFirst
                             [options]="tamanhoMarmitaList"
                             [(ngModel)]="objeto.tamanhoMarmita"
+
                             optionLabel="pesoMarmita">
                 </p-dropdown>
                 <label for="tamanhoMarmita">Tamanho da Marmita</label>
               </span>
-              <span class="ui-float-label my-2">
+              <span class="ui-float-label my-3">
                 <input [(ngModel)]="objeto.quantidade"
                        type="number"
                        id="quantidade"
@@ -37,7 +39,7 @@
                   type="button">
           </button>
         </div>
-      </p-card>
+      </div>
     </div>
   </div>
 </div>
