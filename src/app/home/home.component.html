@@ -3,8 +3,8 @@
     <div class="col-12">
       <div class="col-12">
         <div *ngIf="deHoje" class="doDia">
-          <h3>Cardápio do Dia!</h3>
-          <ul>
+          <h4 class="h4Dia">Cardápio do Dia!</h4>
+          <ul class="listaCardapioDia">
             <li *ngFor="let item of deHoje.comidaCardapioList">{{item.comida.comida}}</li>
           </ul>
         </div>
@@ -16,14 +16,18 @@
       <p-carousel [value]="lista" [numVisible]="4"
                   [numScroll]="1"
                   [circular]="true"
-                  [autoplayInterval]="7000">
+                  [autoplayInterval]="7000" [responsiveOptions]="responsiveOptions">
         <ng-template let-cardapio pTemplate="item">
-          <div class="cardapio">
-            <div class="cardapio-detalhes">
-              <h5 class="text-center">{{cardapio.cardapio}}</h5>
-              <ul>
+
+          <div class="card cardapioCarousel">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{cardapio.cardapio}}</h5>
+              <ul class="cardapioList mb-2">
                 <li *ngFor="let item of cardapio.comidaCardapioList">{{item.comida.comida}}</li>
               </ul>
+            </div>
+            <div class="text-center mb-2">
+              <button class="btn btn-success">Pedir</button>
             </div>
           </div>
         </ng-template>
