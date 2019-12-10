@@ -34,7 +34,8 @@ import {CadastroComponent} from "./auth/cadastro/cadastro.component";
 import { SignoutComponent } from './auth/signout/signout.component';
 import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
-import {NgxMaskModule} from "ngx-mask";
+import {NgxMaskModule} from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +80,31 @@ import {NgxMaskModule} from "ngx-mask";
     NgxMaskModule.forRoot(),
     InputTextModule,
   ],
+    imports: [
+        BrowserAnimationsModule,
+        BrowserModule,
+        AppRoutingModule,
+        SidebarModule,
+        ButtonModule,
+        ToastModule,
+        MenuModule,
+        TooltipModule,
+        CardModule,
+        TableModule,
+        ConfirmDialogModule,
+        HttpClientModule,
+        MessageModule,
+        FormsModule,
+        CheckboxModule,
+        MultiSelectModule,
+        HomeModule,
+        ReactiveFormsModule,
+        VMessageModule,
+        CarouselModule,
+        CalendarModule,
+        DropdownModule,
+        NgxMaskModule.forRoot()
+    ],
   providers: [MessageService, ConfirmationService, SidebarModule, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
