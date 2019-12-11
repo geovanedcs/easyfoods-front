@@ -32,7 +32,8 @@
               </ul>
             </div>
             <div class="text-center mb-2">
-              <button class="btn btn-success" >Pedir</button>
+              <button *ngIf="cardapio.idDia == dia.getDay()" [routerLink]="['/pedido/form']" class="btn btn-success" >Pedir</button>
+              <button *ngIf="cardapio.idDia != dia.getDay()" class="btn btn-success" >Pedir</button>
             </div>
           </div>
         </ng-template>

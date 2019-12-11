@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Pedido} from "../../model/pedido";
-import {ActivatedRoute, Router} from "@angular/router";
-import {MessageService} from "primeng";
-import {PedidoService} from "../../service/pedido.service";
-import {TamanhoMarmita} from "../../model/tamanho-marmita";
-import {MarmitaService} from "../../service/marmita.service";
+import {Pedido} from '../../model/pedido';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MessageService} from 'primeng';
+import {PedidoService} from '../../service/pedido.service';
+import {TamanhoMarmita} from '../../model/tamanho-marmita';
+import {MarmitaService} from '../../service/marmita.service';
 
 @Component({
   selector: 'app-pedido-form',
@@ -15,6 +15,7 @@ export class PedidoFormComponent implements OnInit {
 
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
+  dia = new Date();
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
@@ -26,14 +27,14 @@ export class PedidoFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
         });
       } else {
-        this.resetaForm();
+        this.pedirDoDia();
       }
     });
   }
@@ -56,8 +57,9 @@ export class PedidoFormComponent implements OnInit {
     });
   }
 
-  private resetaForm(): void {
+  pedirDoDia(): void {
     this.objeto = new Pedido();
+    this.objeto.cardapio.idDia = this.dia.getDay();
   }
 
 }
