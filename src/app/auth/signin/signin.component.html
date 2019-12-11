@@ -6,7 +6,7 @@
     <input #cpfInput
       formControlName="cpf"
       class="form-control"
-      placeholder="Cpf"
+      placeholder="Cpf" mask="000.000.000-00"
       autofocus>
     <app-vmessage
       *ngIf="loginForm.get('cpf').errors?.required"

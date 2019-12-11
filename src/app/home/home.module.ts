@@ -6,15 +6,17 @@ import {CommonModule} from '@angular/common';
 import {VMessageModule} from '../vmessage/vmessage.module';
 import {SigninComponent} from '../auth/signin/signin.component';
 import {RouterModule} from '@angular/router';
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   declarations: [SigninComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    VMessageModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        VMessageModule,
+        RouterModule,
+        NgxMaskModule
+    ],
   providers: [],
   bootstrap: [HomeComponent]
 })
