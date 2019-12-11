@@ -1,5 +1,6 @@
 import {TamanhoMarmita} from "./tamanho-marmita";
 import {Cliente} from "./cliente";
+import {Cardapio} from "./cardapio";
 
 export class Pedido {
   id: number;
@@ -8,4 +9,5 @@ export class Pedido {
   quantidade: number;
   cliente: Cliente;
   vendedor: Cliente;
+  cardapio: Cardapio;
 }

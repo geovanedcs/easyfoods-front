@@ -10,19 +10,11 @@ import {Cliente} from "../model/cliente";
   styleUrls: ['./pedido.component.scss']
 })
 export class PedidoComponent implements OnInit {
-  col: any[];
   lista: Pedido[];
   loading = false;
 
   constructor(private pedidoService: PedidoService,
               private titleService: Title) {
-    this.col = [
-      {field: 'cliente', header: 'Cliente'},
-      {field: 'vendedor', header: 'Vendedor'},
-      {field: 'dataPedido', header: 'Data do Pedido'},
-      {field: 'tamanhoMarmita', header: 'Tamanho da Marmita'},
-      {field: 'quantidade', header: 'Quantidade'},
-    ];
   }
 
   ngOnInit() {

@@ -3,10 +3,8 @@ import {Pedido} from "../../model/pedido";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "primeng";
 import {PedidoService} from "../../service/pedido.service";
-import {Ingrediente} from "../../model/ingrediente";
 import {TamanhoMarmita} from "../../model/tamanho-marmita";
 import {MarmitaService} from "../../service/marmita.service";
-import {getLocaleDateFormat} from "@angular/common";
 
 @Component({
   selector: 'app-pedido-form',
@@ -14,6 +12,7 @@ import {getLocaleDateFormat} from "@angular/common";
   styleUrls: ['./pedido-form.component.scss']
 })
 export class PedidoFormComponent implements OnInit {
+
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
 
@@ -27,7 +26,7 @@ export class PedidoFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
@@ -40,6 +39,7 @@ export class PedidoFormComponent implements OnInit {
   }
 
   salvar(): void {
+    console.log(this.objeto);
     this.pedidoService.save(this.objeto).subscribe(res => {
       this.objeto = res;
       console.log(this.objeto);
