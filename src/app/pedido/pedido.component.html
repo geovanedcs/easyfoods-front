@@ -10,27 +10,45 @@
                   type="button"></button>
         </div>
         <p-table (onLazyLoad)="carregaLista()"
-                 [columns]="col"
                  [lazy]="true"
                  [loading]="loading"
                  [value]="lista">
           <ng-template pTemplate="header" let-columns>
             <tr>
-              <th *ngFor="let col of columns">
-                {{col.header}}
+              <th>
+                Cliente
+              </th>
+              <th>
+                Vendedor
+              </th>
+              <th>
+                Data do Pedido
+              </th>
+              <th>
+                Tamanho da Marmita
+              </th>
+              <th>
+                Quantidade
               </th>
               <th class="text-center">Ações</th>
             </tr>
           </ng-template>
           <ng-template let-columns="columns" let-rowData pTemplate="body">
             <tr>
-              <td *ngFor="let col of columns">
-                <ng-container *ngIf="col.field == 'tamanhoMarmita'">
-                  {{rowData[col.field]?.pesoMarmita}}
-                </ng-container>
-                <ng-container *ngIf="col.field !== 'tamanhoMarmita'">
-                  {{rowData[col.field]}}
-                </ng-container>
+              <td>
+                {{rowData.cliente.nome}}
+              </td>
+              <td>
+                {{rowData.vendedor.nome}}
+              </td>
+              <td>
+                {{rowData.dataPedido}}
+              </td>
+              <td>
+                {{rowData.tamanhoMarmita.pesoMarmita}}
+              </td>
+              <td>
+                {{rowData.quantidade}}
               </td>
               <td class="text-center">
                 <i [queryParams]="{id: rowData['id']}"

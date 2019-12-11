@@ -28,7 +28,6 @@ import { CardapioFormComponent } from './cardapio/cardapio-form/cardapio-form.co
 import { TamanhoMarmitaComponent } from './tamanho-marmita/tamanho-marmita.component';
 import { TamanhoMarmitaFormComponent } from './tamanho-marmita/tamanho-marmita-form/tamanho-marmita-form.component';
 import {HomeModule} from './home/home.module';
-import {VMessageModule} from './vmessage/vmessage.module';
 import {TokenInterceptor} from './auth/token.interceptor';
 import {CadastroComponent} from "./auth/cadastro/cadastro.component";
 import { SignoutComponent } from './auth/signout/signout.component';
@@ -75,7 +74,6 @@ import { ClientesComponent } from './auth/clientes/clientes.component';
     MultiSelectModule,
     HomeModule,
     ReactiveFormsModule,
-    VMessageModule,
     CarouselModule,
     CalendarModule,
     DropdownModule,
