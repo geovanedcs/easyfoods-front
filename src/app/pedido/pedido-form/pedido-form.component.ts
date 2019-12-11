@@ -5,6 +5,9 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
+// @ts-ignore
+import moment = require('moment');
+
 import {Cardapio} from "../../model/cardapio";
 import {Cliente} from "../../model/cliente";
 import {UserService} from "../../service/user.service";
@@ -18,6 +21,7 @@ export class PedidoFormComponent implements OnInit {
 
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
+  hoje = new Date();
   cliente: Cliente;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -39,7 +43,7 @@ export class PedidoFormComponent implements OnInit {
           this.objeto = res;
         });
       } else {
-        // this.pedirDoDia();
+        this.pedirDoDia();
       }
     });
     this.userService.getUser().subscribe(res => {
@@ -66,8 +70,18 @@ export class PedidoFormComponent implements OnInit {
     });
   }
 
-  pedirDoDia(cardapio:Cardapio): void {
+  pedirDoDia(): void {
     this.objeto = new Pedido();
+    this.objeto.cardapio.idDia = this.hoje.getDay();
+    this.objeto.dataPedido = this.hoje;
+  }
+  agendar(idDia: number): void {
+    this.objeto = new Pedido();
+    this.objeto.cardapio.idDia = idDia;
+    const dia = (this.hoje.getDay() + (idDia - this.hoje.getDay()));
+    const agendado = moment().add(dia, 'd').toDate();
+    this.objeto.dataPedido = agendado;
+    console.log(this.objeto.dataPedido);
   }
 
 }
