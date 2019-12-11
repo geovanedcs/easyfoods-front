@@ -23,8 +23,7 @@ export class PedidoFormComponent implements OnInit {
 
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
-  // @ts-ignore
-  hoje = new Date();
+  hoje: Date;
   cliente: Cliente;
   cardapio: Cardapio;
 
@@ -42,6 +41,7 @@ export class PedidoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.hoje = new Date();
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
@@ -72,19 +72,19 @@ export class PedidoFormComponent implements OnInit {
     }, erro => {
       this.messageService.add({
         severity: 'error',
-        summary: "erro.error",
+        summary: erro.error.message,
       });
     });
   }
   pedirDoDia(): void {
+    this.objeto = new Pedido();
+    this.objeto.dataPedido = this.hoje;
     this.pegarVendedor(2);
+    this.objeto.cardapio.idDia = this.hoje.getDay();
     this.cardapioService.findAll().subscribe(res => {
       // @ts-ignore
       this.objeto.cardapio = res.find(value => value.idDia == this.hoje.getDay());
     });
-    this.objeto = new Pedido();
-    this.objeto.cardapio.idDia = this.hoje.getDay();
-    this.objeto.dataPedido = this.hoje;
   }
   agendar(idDia: number): void {
     this.objeto = new Pedido();
