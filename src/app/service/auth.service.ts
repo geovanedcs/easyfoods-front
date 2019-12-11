@@ -11,6 +11,7 @@ const API_URL = 'http://localhost:8080/';
 export class AuthService {
 
   logOn: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public static role: string;
 
   constructor(private http: HttpClient) {
   }
