@@ -54,7 +54,7 @@ export class CardapioFormComponent implements OnInit {
       comidaCardapio.comida = comida;
       this.objeto.comidaCardapioList.push(comidaCardapio);
     }
-
+    this.objeto.id = null;
     this.cardapioService.save(this.objeto).subscribe(res => {
       this.objeto = res;
       this.messageService.add({
