@@ -8,9 +8,11 @@ import {MarmitaService} from '../../service/marmita.service';
 // @ts-ignore
 import moment = require('moment');
 
-import {Cardapio} from "../../model/cardapio";
 import {Cliente} from "../../model/cliente";
 import {UserService} from "../../service/user.service";
+import {ClienteService} from "../../service/cliente.service";
+import {CardapioService} from "../../service/cardapio.service";
+import {Cardapio} from "../../model/cardapio";
 
 @Component({
   selector: 'app-pedido-form',
@@ -21,19 +23,22 @@ export class PedidoFormComponent implements OnInit {
 
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
+  // @ts-ignore
   hoje = new Date();
   cliente: Cliente;
+  cardapio: Cardapio;
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
               private tamanhoMarmitaService: MarmitaService,
               private router: Router,
               private userService: UserService,
+              private cardapioService: CardapioService,
+              private clienteService: ClienteService,
               private messageService: MessageService) {
       tamanhoMarmitaService.findAll().subscribe(tamanhoMarmita => {
         this.tamanhoMarmitaList = tamanhoMarmita;
       });
-
   }
 
   ngOnInit(): void {
@@ -48,12 +53,14 @@ export class PedidoFormComponent implements OnInit {
     });
     this.userService.getUser().subscribe(res => {
       this.cliente = res;
+      console.log(res);
     });
 
   }
 
   salvar(): void {
     console.log(this.objeto);
+    this.objeto.cliente = this.cliente;
     this.pedidoService.save(this.objeto).subscribe(res => {
       this.objeto = res;
       console.log(this.objeto);
@@ -65,12 +72,16 @@ export class PedidoFormComponent implements OnInit {
     }, erro => {
       this.messageService.add({
         severity: 'error',
-        summary: erro.error.message
+        summary: "erro.error",
       });
     });
   }
-
   pedirDoDia(): void {
+    this.pegarVendedor(2);
+    this.cardapioService.findAll().subscribe(res => {
+      // @ts-ignore
+      this.objeto.cardapio = res.find(value => value.idDia == this.hoje.getDay());
+    });
     this.objeto = new Pedido();
     this.objeto.cardapio.idDia = this.hoje.getDay();
     this.objeto.dataPedido = this.hoje;
@@ -83,5 +94,10 @@ export class PedidoFormComponent implements OnInit {
     this.objeto.dataPedido = agendado;
     console.log(this.objeto.dataPedido);
   }
-
+  pegarVendedor(id: number): void{
+    this.clienteService.findOne(id).subscribe(res =>
+    this.objeto.vendedor = res
+    );
+  }
 }
+
