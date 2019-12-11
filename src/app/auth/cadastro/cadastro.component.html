@@ -113,7 +113,8 @@
                     Confirmar senha é obrigatório!
                   </div>
                 </div>
-                <div *ngIf="confirmarSenhaTeste.value != senha.value" class="alert alert-danger">
+
+                <div *ngIf="confirmarSenhaTeste.value != senha.value && (confirmarSenhaTeste.dirty || confirmarSenhaTeste.touched)" class="alert alert-danger">
                   Senhas não conferem!
                 </div>
               </div>
