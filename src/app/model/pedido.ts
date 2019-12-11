@@ -10,4 +10,5 @@ export class Pedido {
   cliente: Cliente;
   vendedor: Cliente;
   cardapio: Cardapio;
+  status: number; // 0 - Cancelado, 1 - solicitado, 2 - pendente(pagamento), 3 - pago
 }
