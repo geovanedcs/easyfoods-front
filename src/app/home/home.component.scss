@@ -73,8 +73,10 @@
 .cardapioList {
   padding: 0;
   overflow-y: auto;
+  max-height: 6em;
   & li {
     list-style: none;
     padding: 0;
   }
 }
+
