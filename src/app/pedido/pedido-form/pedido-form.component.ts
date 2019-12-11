@@ -5,6 +5,9 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
+// @ts-ignore
+import moment = require('moment');
+
 
 @Component({
   selector: 'app-pedido-form',
@@ -15,7 +18,7 @@ export class PedidoFormComponent implements OnInit {
 
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
-  dia = new Date();
+  hoje = new Date();
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
@@ -59,7 +62,16 @@ export class PedidoFormComponent implements OnInit {
 
   pedirDoDia(): void {
     this.objeto = new Pedido();
-    this.objeto.cardapio.idDia = this.dia.getDay();
+    this.objeto.cardapio.idDia = this.hoje.getDay();
+    this.objeto.dataPedido = this.hoje;
+  }
+  agendar(idDia: number): void {
+    this.objeto = new Pedido();
+    this.objeto.cardapio.idDia = idDia;
+    const dia = (this.hoje.getDay() + (idDia - this.hoje.getDay()));
+    const agendado = moment().add(dia, 'd').toDate();
+    this.objeto.dataPedido = agendado;
+    console.log(this.objeto.dataPedido);
   }
 
 }
