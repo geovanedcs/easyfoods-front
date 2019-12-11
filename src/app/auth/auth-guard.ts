@@ -3,6 +3,7 @@ import {UserService} from "../service/user.service";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {AuthService} from "../service/auth.service";
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -12,7 +13,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.userService.isLogged()){
+    if (this.userService.isLogged()) {
       return true;
     }
     this.router.navigate(['login']);

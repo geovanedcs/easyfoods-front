@@ -1,3 +1,4 @@
 export interface Sujeito {
-  id: number;
+
+  sub: number;
 }

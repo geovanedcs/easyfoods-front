@@ -1,3 +1,5 @@
+import {Perfil} from "./perfil";
+
 export class Cliente {
   id: number;
   nome: string;
@@ -8,4 +10,5 @@ export class Cliente {
   logradouro: string;
   numero: number;
   bairro: string;
+  perfis?: Perfil;
 }
