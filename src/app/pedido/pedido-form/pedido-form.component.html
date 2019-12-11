@@ -4,19 +4,12 @@
       <div header="Dados do Pedido">
         <div class="row">
           <div class="col-12">
-
-            <span class="ui-float-label my-3">
-
-                <p-dropdown [options]="" [(ngModel)]="selectedCity1"></p-dropdown>
-              </span>
-              <span class="ui-float-label my-4">
-
+            <span class="ui-float-label my-4">
                 <p-dropdown id="tamanhoMarmita"
                             autoDisplayFirst
                             [options]="tamanhoMarmitaList"
                             [(ngModel)]="objeto.tamanhoMarmita"
                             optionLabel="pesoMarmita">
-
                 </p-dropdown>
                 <label for="tamanhoMarmita">Tamanho da Marmita</label>
               </span>
@@ -41,5 +34,3 @@
     </div>
   </div>
 </div>
-
-

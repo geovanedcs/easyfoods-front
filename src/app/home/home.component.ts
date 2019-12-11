@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   lista: Cardapio[];
   loading = false;
   deHoje: Cardapio;
+  // @ts-ignore
   dia = new Date();
   responsiveOptions;
 

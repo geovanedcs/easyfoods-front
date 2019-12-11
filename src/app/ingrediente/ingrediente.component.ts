@@ -13,6 +13,7 @@ export class IngredienteComponent implements OnInit {
   lista: Ingrediente[];
   loading = false;
 
+
   constructor(private ingredienteService: IngredienteService,
               private titleService: Title) {
     this.col = [

@@ -5,6 +5,9 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
+import {Cardapio} from "../../model/cardapio";
+import {Cliente} from "../../model/cliente";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-pedido-form',
@@ -15,16 +18,18 @@ export class PedidoFormComponent implements OnInit {
 
   objeto: Pedido;
   tamanhoMarmitaList: TamanhoMarmita[];
-  dia = new Date();
+  cliente: Cliente;
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
               private tamanhoMarmitaService: MarmitaService,
               private router: Router,
+              private userService: UserService,
               private messageService: MessageService) {
-    tamanhoMarmitaService.findAll().subscribe(tamanhoMarmita => {
-      this.tamanhoMarmitaList = tamanhoMarmita;
-    });
+      tamanhoMarmitaService.findAll().subscribe(tamanhoMarmita => {
+        this.tamanhoMarmitaList = tamanhoMarmita;
+      });
+
   }
 
   ngOnInit(): void {
@@ -34,9 +39,13 @@ export class PedidoFormComponent implements OnInit {
           this.objeto = res;
         });
       } else {
-        this.pedirDoDia();
+        // this.pedirDoDia();
       }
     });
+    this.userService.getUser().subscribe(res => {
+      this.cliente = res;
+    });
+
   }
 
   salvar(): void {
@@ -57,9 +66,8 @@ export class PedidoFormComponent implements OnInit {
     });
   }
 
-  pedirDoDia(): void {
+  pedirDoDia(cardapio:Cardapio): void {
     this.objeto = new Pedido();
-    this.objeto.cardapio.idDia = this.dia.getDay();
   }
 
 }
