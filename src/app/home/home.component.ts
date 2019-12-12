@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CardapioService} from '../service/cardapio.service';
 import {Title} from '@angular/platform-browser';
 import {Cardapio} from '../model/cardapio';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   responsiveOptions;
 
   constructor(private cardapioService: CardapioService,
-              private titleService: Title) {
+              private titleService: Title,
+              private router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -57,4 +59,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  agendar(id: number): void {
+    this.router.navigateByUrl('/pedido/form', {state: {idDia: id}});
+  }
 }

@@ -5,14 +5,14 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
-// @ts-ignore
-import moment = require('moment');
+import moment from 'moment';
+import {Cliente} from '../../model/cliente';
+import {UserService} from '../../service/user.service';
+import {ClienteService} from '../../service/cliente.service';
+import {CardapioService} from '../../service/cardapio.service';
+import {Cardapio} from '../../model/cardapio';
+import {map} from 'rxjs/operators';
 
-import {Cliente} from "../../model/cliente";
-import {UserService} from "../../service/user.service";
-import {ClienteService} from "../../service/cliente.service";
-import {CardapioService} from "../../service/cardapio.service";
-import {Cardapio} from "../../model/cardapio";
 
 @Component({
   selector: 'app-pedido-form',
@@ -49,22 +49,24 @@ export class PedidoFormComponent implements OnInit {
           this.objeto = res;
         });
       } else {
-        this.pedirDoDia();
+        this.agendar();
       }
     });
     this.userService.getUser().subscribe(res => {
       this.cliente = res;
+      console.log(res);
     });
-
   }
 
 
 
   salvar(): void {
+
     console.log(this.objeto);
     this.objeto.cliente = this.cliente;
     this.pedidoService.save(this.objeto).subscribe(res => {
       this.objeto = res;
+      console.log(this.objeto);
       this.messageService.add({
         severity: 'success',
         summary: 'Salvo com sucesso!',
@@ -82,19 +84,25 @@ export class PedidoFormComponent implements OnInit {
     this.objeto.dataPedido = this.hoje;
     this.pegarVendedor(2);
     this.cardapioService.findAll().subscribe(res => {
-      console.log(res);
-      this.objeto.cardapio = res.find(value => value.idDia == this.hoje.getDay());
+      // @ts-ignore
+      this.objeto.cardapio = res.find(value => value.idDia === this.hoje.getDay());
     });
   }
 
-  agendar(idDia: number): void {
+  agendar(): void {
+    const idCardapio  = history.state.idDia;
     this.objeto = new Pedido();
-    this.objeto.cardapio.idDia = idDia;
-    const dia = (this.hoje.getDay() + (idDia - this.hoje.getDay()));
-    const agendado = moment().add(dia, 'd').toDate();
-    this.objeto.dataPedido = agendado;
+    const dia = moment().add(idCardapio, 'd').subtract(this.hoje.getDay(), 'd');
+    // @ts-ignore
+    this.objeto.dataPedido = dia;
+    this.pegarVendedor(2);
+    this.cardapioService.findAll().subscribe(res => {
+      this.objeto.cardapio = res.find(value => value.idDia === dia.day());
+    });
+    this.objeto.status = 1;
   }
-  pegarVendedor(id: number): void{
+
+  pegarVendedor(id: number): void {
     this.clienteService.findOne(id).subscribe(res =>
     this.objeto.vendedor = res
     );
