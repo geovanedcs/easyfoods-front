@@ -11,6 +11,7 @@ import {UserService} from '../../service/user.service';
 import {ClienteService} from '../../service/cliente.service';
 import {CardapioService} from '../../service/cardapio.service';
 import {Cardapio} from '../../model/cardapio';
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class PedidoFormComponent implements OnInit {
           this.objeto = res;
         });
       } else {
-        this.pedirDoDia();
+        this.agendar();
       }
     });
     this.userService.getUser().subscribe(res => {
@@ -60,6 +61,7 @@ export class PedidoFormComponent implements OnInit {
 
 
   salvar(): void {
+
     console.log(this.objeto);
     this.objeto.cliente = this.cliente;
     this.pedidoService.save(this.objeto).subscribe(res => {
@@ -88,6 +90,7 @@ export class PedidoFormComponent implements OnInit {
   }
 
   agendar(): void {
+    console.log(this.router.getCurrentNavigation().extras.state);
     const hj = 5;
     this.objeto = new Pedido();
     const dia = moment().add(hj, 'd').subtract(this.hoje.getDay(), 'd');
