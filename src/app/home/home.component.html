@@ -34,8 +34,8 @@
             <div class="text-center mb-2">
               <button *ngIf="cardapio.idDia > dia.getDay()" (click)="agendar(cardapio.idDia)" class="btn btn-success" >Pedir</button>
               <button *ngIf="cardapio.idDia == dia.getDay() && dia.getHours() < 10" (click)="agendar(cardapio.idDia)" class="btn btn-success" >Pedir</button>
-              <button *ngIf="cardapio.idDia == dia.getDay() && dia.getHours() > 10" [disabled]="true" class="btn btn-danger" title="Oops! Não é mais possivel fazer pedido para esse dia">Pedir</button>
-              <button *ngIf="cardapio.idDia < dia.getDay()" [disabled]="true" class="btn btn-danger" title="Oops! Não é mais possivel fazer pedido para esse dia">Pedir</button>
+              <button *ngIf="cardapio.idDia == dia.getDay() && dia.getHours() > 10" [disabled]="true" class="btn btn-danger disableCursor" title="Oops! Não é mais possivel fazer pedido para esse dia">Pedir</button>
+              <button *ngIf="cardapio.idDia < dia.getDay()" [disabled]="true" class="btn btn-danger disableCursor" title="Oops! Não é mais possivel fazer pedido para esse dia">Pedir</button>
 
             </div>
           </div>
