@@ -54,7 +54,6 @@ export class PedidoFormComponent implements OnInit {
     });
     this.userService.getUser().subscribe(res => {
       this.cliente = res;
-      console.log(res);
     });
 
   }
@@ -64,7 +63,6 @@ export class PedidoFormComponent implements OnInit {
     this.objeto.cliente = this.cliente;
     this.pedidoService.save(this.objeto).subscribe(res => {
       this.objeto = res;
-      console.log(this.objeto);
       this.messageService.add({
         severity: 'success',
         summary: 'Salvo com sucesso!',
@@ -81,19 +79,18 @@ export class PedidoFormComponent implements OnInit {
     this.objeto = new Pedido();
     this.objeto.dataPedido = this.hoje;
     this.pegarVendedor(2);
-    this.objeto.cardapio.idDia = this.hoje.getDay();
     this.cardapioService.findAll().subscribe(res => {
-      // @ts-ignore
+      console.log(res);
       this.objeto.cardapio = res.find(value => value.idDia == this.hoje.getDay());
     });
   }
+
   agendar(idDia: number): void {
     this.objeto = new Pedido();
     this.objeto.cardapio.idDia = idDia;
     const dia = (this.hoje.getDay() + (idDia - this.hoje.getDay()));
     const agendado = moment().add(dia, 'd').toDate();
     this.objeto.dataPedido = agendado;
-    console.log(this.objeto.dataPedido);
   }
   pegarVendedor(id: number): void{
     this.clienteService.findOne(id).subscribe(res =>
