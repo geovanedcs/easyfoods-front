@@ -3,6 +3,12 @@ import {PedidoService} from "../service/pedido.service";
 import {Title} from "@angular/platform-browser";
 import {Pedido} from "../model/pedido";
 import {Cliente} from "../model/cliente";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MarmitaService} from "../service/marmita.service";
+import {UserService} from "../service/user.service";
+import {CardapioService} from "../service/cardapio.service";
+import {ClienteService} from "../service/cliente.service";
+import {MessageService} from "primeng";
 
 @Component({
   selector: 'app-pedido',
@@ -12,9 +18,12 @@ import {Cliente} from "../model/cliente";
 export class PedidoComponent implements OnInit {
   lista: Pedido[];
   loading = false;
+  objeto: Pedido;
 
   constructor(private pedidoService: PedidoService,
-              private titleService: Title) {
+              private titleService: Title,
+              private activatedRoute: ActivatedRoute,
+              ) {
   }
 
   ngOnInit() {
@@ -31,6 +40,19 @@ export class PedidoComponent implements OnInit {
       return  "Ok";
     }
     return null;
+  }
+
+  cancela( status:number){
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      if (params.has('id')) {
+        this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
+          this.objeto = res;
+          this.objeto.status = 0;
+          this.pedidoService.save(this.objeto);
+          this.carregaLista();
+        });
+      }
+    });
   }
 
   carregaLista(): void {

@@ -12,4 +12,9 @@ export class Pedido {
   cardapio: Cardapio;
   status: number; // 0 - Cancelado, 1 - solicitado, 2 - pendente(pagamento), 3 - pago
 
+  constructor() {
+    this.status = 1;
+  }
+
 }
+
