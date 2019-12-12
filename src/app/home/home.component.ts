@@ -60,6 +60,6 @@ export class HomeComponent implements OnInit {
   }
 
   agendar(id: number): void {
-    this.router.navigateByUrl('/pedido/form', {state: {idDia: id}});
+    this.router.navigate(['/pedido/form'], {queryParams: {idDia: id}});
   }
 }
