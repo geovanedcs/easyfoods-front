@@ -8,12 +8,24 @@ import {Title} from "@angular/platform-browser";
   styleUrls: ['./relatorio.component.scss']
 })
 export class RelatorioComponent implements OnInit {
+  items: any[];
+  pedidos = true;
 
   constructor(private relatorioService: RelatorioService,
               private titleService: Title) { }
 
   ngOnInit() {
     this.titleService.setTitle('Relatórios');
+    this.items = [
+      {
+        label: "Relatório Pedidos",
+        command: this.pedidos = true,
+      },
+      {
+        label: "Teste",
+        command: this.pedidos = false,
+      }
+    ];
   }
 
 }
