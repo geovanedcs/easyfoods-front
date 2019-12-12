@@ -14,7 +14,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  TooltipModule, InputTextModule
+  TooltipModule, InputTextModule, DialogModule
 } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
@@ -36,6 +36,9 @@ import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 import {NgxMaskModule} from 'ngx-mask';
 import { ClientesComponent } from './auth/clientes/clientes.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
+import { ListaPedidosComponent } from './relatorio/lista-pedidos/lista-pedidos.component';
+import {SidebarService} from "./service/sidebar.service";
+import {RelatorioService} from "./service/relatorio.service";
 
 
 @NgModule({
@@ -56,6 +59,7 @@ import { RelatorioComponent } from './relatorio/relatorio.component';
     PedidoFormComponent,
     ClientesComponent,
     RelatorioComponent,
+    ListaPedidosComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -81,8 +85,9 @@ import { RelatorioComponent } from './relatorio/relatorio.component';
     DropdownModule,
     NgxMaskModule.forRoot(),
     InputTextModule,
+    DialogModule,
   ],
-  providers: [MessageService, ConfirmationService, SidebarModule, {
+  providers: [MessageService, ConfirmationService, SidebarService, RelatorioService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

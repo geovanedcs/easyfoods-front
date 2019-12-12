@@ -31,6 +31,7 @@ body {
   background-color: #ffffff;
   border-radius: .35em;
   padding: 2em;
+  min-height: 75vh;
 }
 
 .fa-bars {
@@ -73,3 +74,6 @@ body {
 }
 // FIM SCROLLBAR
 
+.rodape {
+  bottom: 0;
+}
