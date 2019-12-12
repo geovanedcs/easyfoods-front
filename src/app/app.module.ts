@@ -85,7 +85,6 @@ import {RelatorioService} from "./service/relatorio.service";
     DropdownModule,
     NgxMaskModule.forRoot(),
     InputTextModule,
-    DialogModule,
   ],
   providers: [MessageService, ConfirmationService, SidebarService, RelatorioService, {
     provide: HTTP_INTERCEPTORS,

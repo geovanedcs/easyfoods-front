@@ -5,7 +5,7 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
-import moment from 'moment';
+import * as moment from 'moment';
 import {Cliente} from '../../model/cliente';
 import {UserService} from '../../service/user.service';
 import {ClienteService} from '../../service/cliente.service';
