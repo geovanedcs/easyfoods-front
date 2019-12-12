@@ -90,10 +90,9 @@ export class PedidoFormComponent implements OnInit {
   }
 
   agendar(): void {
-    console.log(history.state.idDia);
-    const hj = 5;
+    const idCardapio  = history.state.idDia;
     this.objeto = new Pedido();
-    const dia = moment().add(hj, 'd').subtract(this.hoje.getDay(), 'd');
+    const dia = moment().add(idCardapio, 'd').subtract(this.hoje.getDay(), 'd');
     // @ts-ignore
     this.objeto.dataPedido = dia;
     this.pegarVendedor(2);
