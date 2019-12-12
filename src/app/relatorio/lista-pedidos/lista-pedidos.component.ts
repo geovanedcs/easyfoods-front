@@ -16,11 +16,14 @@ export class ListaPedidosComponent implements OnInit {
   totalMarmitaPeso: TotalMarmitaPeso[];
   totalPedido: TotalPedido;
   listaStatus: any[];
+  colPeso: any[];
+  colPedido: any[];
 
   //Filtros
   dataIni: Date;
   dataFim: Date;
-  status: number;
+  status: string;
+  display = false;
 
   constructor(private relatorioService: RelatorioService,
               private titleService: Title) {
@@ -29,14 +32,27 @@ export class ListaPedidosComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Lista de Pedidos');
     this.listaStatus = [
-      {field: 0, header: "Cancelado"},
-      {field: 1, header: "Solicitado"},
-      {field: 2, header: "Pendente"},
-      {field: 3, header: "Pago"}
+      {value: "CANCELADO", label: "Cancelado"},
+      {value: "SOLICITADO", label: "Solicitado"},
+      {value: "PENDENTE", label: "Pendente"},
+      {value: "PAGO", label: "Pago"}
     ];
+    this.colPeso = [
+      {field: 'pesoMarmita', header: 'Peso'},
+      {field: 'quantidade', header: 'Quantidade'},
+    ];
+    this.colPedido = [
+      {field: 'dataPedido', header: 'Data do Pedido'},
+      {field: 'nome', header: 'Cliente'},
+      {field: 'quantidade', header: 'Quantidade'},
+      {field: 'peso', header: 'Peso'},
+      {field: 'total', header: 'Total'},
+    ];
+
   }
 
   relatorioPedidos(): void {
+    this.display = true;
     this.relatorioService.listaPedidos(this.dataIni, this.dataIni, this.status).subscribe(res => {
       this.listaPedidos = res;
     });
@@ -47,5 +63,4 @@ export class ListaPedidosComponent implements OnInit {
       this.totalPedido = res;
     });
   }
-
 }

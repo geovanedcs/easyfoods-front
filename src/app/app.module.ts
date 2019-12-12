@@ -14,7 +14,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  TooltipModule, InputTextModule, DialogModule
+  TooltipModule, InputTextModule, DialogModule, PanelMenuModule
 } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
@@ -85,6 +85,8 @@ import {RelatorioService} from "./service/relatorio.service";
     DropdownModule,
     NgxMaskModule.forRoot(),
     InputTextModule,
+    DialogModule,
+    PanelMenuModule,
   ],
   providers: [MessageService, ConfirmationService, SidebarService, RelatorioService, {
     provide: HTTP_INTERCEPTORS,
