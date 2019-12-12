@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-6 pl">
-      <div header="Dados do Pedido">
+      <div>
         <div class="row">
           <div class="col-12">
+            <label class="col-6 text-center d-inline">Pedido Para {{objeto.cardapio.cardapio}}, {{objeto.dataPedido | date:'dd/MM/yy'}}</label>
             <span class="ui-float-label my-4">
                 <p-dropdown id="tamanhoMarmita"
                             autoDisplayFirst
@@ -13,7 +14,7 @@
                 </p-dropdown>
                 <label for="tamanhoMarmita">Tamanho da Marmita</label>
               </span>
-              <span class="ui-float-label my-3">
+              <span class="ui-float-label my-4">
                 <input [(ngModel)]="objeto.quantidade"
                        type="number"
                        id="quantidade"

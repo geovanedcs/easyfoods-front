@@ -23,6 +23,8 @@ export class PedidoComponent implements OnInit {
   constructor(private pedidoService: PedidoService,
               private titleService: Title,
               private activatedRoute: ActivatedRoute,
+              private messageService: MessageService,
+              private router: Router
               ) {
   }
 
@@ -43,17 +45,30 @@ export class PedidoComponent implements OnInit {
   }
 
   cancela(id: number): void {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      if (params.has('id')) {
-        this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
+
+      this.pedidoService.findOne(id).subscribe(res => {
+        this.objeto = res;
+        console.log(this.objeto.status);
+        this.objeto.status = 0;
+        console.log(this.objeto);
+        this.pedidoService.save(this.objeto).subscribe(res => {
           this.objeto = res;
-          this.objeto.status = 0;
-          this.pedidoService.save(this.objeto);
+          console.log(this.objeto);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Salvo com sucesso!',
+          });
           this.carregaLista();
+          this.router.navigateByUrl('pedido');
+        }, erro => {
+          this.messageService.add({
+            severity: 'error',
+            summary: erro.error.message,
+          });
         });
-      }
-    });
-  }
+      });
+    }
+
 
   carregaLista(): void {
     this.loading = true;
