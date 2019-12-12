@@ -42,7 +42,7 @@ export class PedidoComponent implements OnInit {
     return null;
   }
 
-  cancela( status:number){
+  cancela(id: number): void {
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {

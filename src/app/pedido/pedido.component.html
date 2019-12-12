@@ -62,9 +62,10 @@
                    [routerLink]="['form']"
                    class="pi pi-pencil"
                    title="Editar"></i>
-                <i (click)="cancela(rowData.status)"
+                <a><i (click)="cancela({id: rowData['id']})"
                    class="pi pi-trash"
                    title="cancelar">  </i>
+                </a>
               </td>
             </tr>
           </ng-template>
