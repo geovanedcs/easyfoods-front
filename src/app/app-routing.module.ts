@@ -18,6 +18,7 @@ import {PedidoFormComponent} from './pedido/pedido-form/pedido-form.component';
 import {ClientesComponent} from './auth/clientes/clientes.component';
 import {RelatorioComponent} from "./relatorio/relatorio.component";
 import {ListaPedidosComponent} from "./relatorio/lista-pedidos/lista-pedidos.component";
+import {VendedorGuard} from "./auth/vendedor-guard";
 
 
 const routes: Routes = [
@@ -28,16 +29,16 @@ const routes: Routes = [
     path: 'login', component: SigninComponent
   },
   {
-    path: 'comida', component: ComidaComponent, canActivate: [AuthGuard]
+    path: 'comida', component: ComidaComponent, canActivate: [VendedorGuard]
   },
   {
-    path: 'comida/form', component: ComidaFormComponent, canActivate: [AuthGuard]
+    path: 'comida/form', component: ComidaFormComponent, canActivate: [VendedorGuard]
   },
   {
-    path: 'ingrediente', component: IngredienteComponent, canActivate: [AuthGuard]
+    path: 'ingrediente', component: IngredienteComponent, canActivate: [VendedorGuard]
   },
   {
-    path: 'ingrediente/form', component: IngredienteFormComponent, canActivate: [AuthGuard]
+    path: 'ingrediente/form', component: IngredienteFormComponent, canActivate: [VendedorGuard]
   },
   {
     path: 'pedido', component: PedidoComponent, canActivate: [AuthGuard]
@@ -46,16 +47,16 @@ const routes: Routes = [
     path: 'pedido/form', component: PedidoFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tamanho-marmita', component: TamanhoMarmitaComponent, canActivate: [AuthGuard]
+    path: 'tamanho-marmita', component: TamanhoMarmitaComponent, canActivate: [VendedorGuard]
   },
   {
-    path: 'tamanho-marmita/form', component: TamanhoMarmitaFormComponent, canActivate: [AuthGuard]
+    path: 'tamanho-marmita/form', component: TamanhoMarmitaFormComponent, canActivate: [VendedorGuard]
   },
   {
     path: 'cardapio', component: CardapioComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cardapio/form', component: CardapioFormComponent, canActivate: [AuthGuard]
+    path: 'cardapio/form', component: CardapioFormComponent, canActivate: [VendedorGuard]
   },
   {
     path: 'cadastro', component: CadastroComponent
@@ -64,19 +65,19 @@ const routes: Routes = [
     path: 'logout', component: SignoutComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard]
+    path: 'clientes', component: ClientesComponent, canActivate: [VendedorGuard]
   },
   {
-    path: 'relatorio', component: RelatorioComponent, canActivate: [AuthGuard]
+    path: 'relatorio', component: RelatorioComponent, canActivate: [VendedorGuard]
   },
   {
-    path: 'relatorio/listaPedidos', component: ListaPedidosComponent, canActivate: [AuthGuard]
+    path: 'relatorio/listaPedidos', component: ListaPedidosComponent, canActivate: [VendedorGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard, VendedorGuard]
 })
 export class AppRoutingModule { }
