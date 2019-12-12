@@ -90,7 +90,7 @@ export class PedidoFormComponent implements OnInit {
   }
 
   agendar(): void {
-    console.log(this.router.getCurrentNavigation().extras.state);
+    console.log(history.state.idDia);
     const hj = 5;
     this.objeto = new Pedido();
     const dia = moment().add(hj, 'd').subtract(this.hoje.getDay(), 'd');
