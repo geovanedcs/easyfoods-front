@@ -57,4 +57,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  agendar(idDia: number): void {
+    this.router
+  }
 }
