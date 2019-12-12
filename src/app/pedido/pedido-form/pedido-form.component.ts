@@ -41,6 +41,7 @@ export class PedidoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
     this.hoje = new Date();
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
@@ -56,6 +57,8 @@ export class PedidoFormComponent implements OnInit {
     });
 
   }
+
+
 
   salvar(): void {
     console.log(this.objeto);

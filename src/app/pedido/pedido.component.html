@@ -30,6 +30,10 @@
               <th>
                 Quantidade
               </th>
+              <th>
+                Status
+              </th>
+
               <th class="text-center">Ações</th>
             </tr>
           </ng-template>
@@ -49,6 +53,9 @@
               </td>
               <td>
                 {{rowData.quantidade}}
+              </td>
+              <td>
+                {{mudaStatus(rowData.status)}}
               </td>
               <td class="text-center">
                 <i [queryParams]="{id: rowData['id']}"

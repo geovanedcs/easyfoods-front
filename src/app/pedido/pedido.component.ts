@@ -20,6 +20,18 @@ export class PedidoComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Lista de Pedidos');
   }
+  mudaStatus(status: number) :string {
+    if(status == 0){
+      return  "Cancelado";
+    }else if(status == 1){
+      return  "Solicitado";
+    }else if(status == 2){
+      return  "Pendente";
+    }else if(status == 3){
+      return  "Ok";
+    }
+    return null;
+  }
 
   carregaLista(): void {
     this.loading = true;
