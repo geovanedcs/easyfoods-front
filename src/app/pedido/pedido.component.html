@@ -55,7 +55,7 @@
                 {{rowData.quantidade}}
               </td>
               <td>
-                {{rowData.status}}
+                {{mudaStatus(rowData.status)}}
               </td>
               <td class="text-center">
                 <i [queryParams]="{id: rowData['id']}"
