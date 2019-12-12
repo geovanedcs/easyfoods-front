@@ -5,12 +5,14 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
-import moment from 'moment';
-import {Cliente} from '../../model/cliente';
-import {UserService} from '../../service/user.service';
-import {ClienteService} from '../../service/cliente.service';
-import {CardapioService} from '../../service/cardapio.service';
-import {Cardapio} from '../../model/cardapio';
+// @ts-ignore
+import moment = require('moment');
+
+import {Cliente} from "../../model/cliente";
+import {UserService} from "../../service/user.service";
+import {ClienteService} from "../../service/cliente.service";
+import {CardapioService} from "../../service/cardapio.service";
+import {Cardapio} from "../../model/cardapio";
 
 @Component({
   selector: 'app-pedido-form',
@@ -54,7 +56,6 @@ export class PedidoFormComponent implements OnInit {
       console.log(res);
     });
 
-    console.log(this.agendar());
   }
 
   salvar(): void {
@@ -81,7 +82,8 @@ export class PedidoFormComponent implements OnInit {
     this.pegarVendedor(2);
     this.objeto.cardapio.idDia = this.hoje.getDay();
     this.cardapioService.findAll().subscribe(res => {
-      this.objeto.cardapio = res.find(value => value.idDia === this.hoje.getDay());
+      // @ts-ignore
+      this.objeto.cardapio = res.find(value => value.idDia == this.hoje.getDay());
     });
   }
   agendar(): void {
