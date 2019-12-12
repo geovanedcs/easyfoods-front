@@ -58,6 +58,23 @@ export class PedidoFormComponent implements OnInit {
 
   }
 
+  mudaStatus() :string {
+    let estatus: string;
+    let status: number;
+    status = this.objeto.status;
+    if(status == 0){
+      estatus = "Cancelado";
+    }else if(status == 1){
+      estatus = "Solicitado";
+    }else if(status == 2){
+      estatus = "Pendente";
+    }else if(status == 3){
+      estatus = "Ok";
+    }
+
+    return estatus;
+  }
+
   salvar(): void {
     console.log(this.objeto);
     this.objeto.cliente = this.cliente;
