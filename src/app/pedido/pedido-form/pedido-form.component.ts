@@ -43,13 +43,14 @@ export class PedidoFormComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.hoje = new Date();
+    this.agendar(this.hoje.getDay());
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
         });
-      } else {
-        this.agendar();
+      } else if (params.has('idDia')) {
+        this.agendar(parseInt(params.get('idDia')));
       }
     });
     this.userService.getUser().subscribe(res => {
@@ -61,7 +62,6 @@ export class PedidoFormComponent implements OnInit {
 
 
   salvar(): void {
-
     console.log(this.objeto);
     this.objeto.cliente = this.cliente;
     this.pedidoService.save(this.objeto).subscribe(res => {
@@ -79,6 +79,7 @@ export class PedidoFormComponent implements OnInit {
       });
     });
   }
+
   pedirDoDia(): void {
     this.objeto = new Pedido();
     this.objeto.dataPedido = this.hoje;
@@ -89,12 +90,14 @@ export class PedidoFormComponent implements OnInit {
     });
   }
 
-  agendar(): void {
-    const idCardapio  = history.state.idDia;
+  agendar(idCardapio:number): void {
+    let dia = moment();
     this.objeto = new Pedido();
-    const dia = moment().add(idCardapio, 'd').subtract(this.hoje.getDay(), 'd');
-    // @ts-ignore
-    this.objeto.dataPedido = dia;
+    if (idCardapio) {
+      dia = moment().add(idCardapio, 'd').subtract(this.hoje.getDay(), 'd');
+    }
+
+    this.objeto.dataPedido = dia.toDate();
     this.pegarVendedor(2);
     this.cardapioService.findAll().subscribe(res => {
       this.objeto.cardapio = res.find(value => value.idDia === dia.day());
