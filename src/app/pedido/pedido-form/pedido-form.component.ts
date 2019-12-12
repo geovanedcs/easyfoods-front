@@ -5,14 +5,13 @@ import {MessageService} from 'primeng';
 import {PedidoService} from '../../service/pedido.service';
 import {TamanhoMarmita} from '../../model/tamanho-marmita';
 import {MarmitaService} from '../../service/marmita.service';
-// @ts-ignore
-import moment = require('moment');
+import moment from 'moment';
+import {Cliente} from '../../model/cliente';
+import {UserService} from '../../service/user.service';
+import {ClienteService} from '../../service/cliente.service';
+import {CardapioService} from '../../service/cardapio.service';
+import {Cardapio} from '../../model/cardapio';
 
-import {Cliente} from "../../model/cliente";
-import {UserService} from "../../service/user.service";
-import {ClienteService} from "../../service/cliente.service";
-import {CardapioService} from "../../service/cardapio.service";
-import {Cardapio} from "../../model/cardapio";
 
 @Component({
   selector: 'app-pedido-form',
@@ -55,7 +54,6 @@ export class PedidoFormComponent implements OnInit {
       this.cliente = res;
       console.log(res);
     });
-
   }
 
   salvar(): void {
@@ -80,21 +78,25 @@ export class PedidoFormComponent implements OnInit {
     this.objeto = new Pedido();
     this.objeto.dataPedido = this.hoje;
     this.pegarVendedor(2);
-    this.objeto.cardapio.idDia = this.hoje.getDay();
     this.cardapioService.findAll().subscribe(res => {
       // @ts-ignore
-      this.objeto.cardapio = res.find(value => value.idDia == this.hoje.getDay());
+      this.objeto.cardapio = res.find(value => value.idDia === this.hoje.getDay());
     });
   }
+
   agendar(): void {
-    const hj = 1;
+    const hj = 5;
     this.objeto = new Pedido();
-    this.objeto.dataPedido = moment().add((this.hoje.getDay() + (hj - this.hoje.getDay())), 'd').toDate();
-    this.objeto.cardapio.idDia = hj;
+    const dia = moment().add(hj, 'd').subtract(this.hoje.getDay(), 'd');
+    // @ts-ignore
+    this.objeto.dataPedido = dia;
+    this.pegarVendedor(2);
     this.cardapioService.findAll().subscribe(res => {
-      this.objeto.cardapio = res.find(value => value.idDia == hj);
+      this.objeto.cardapio = res.find(value => value.idDia === dia.day());
     });
+    this.objeto.status = 1;
   }
+
   pegarVendedor(id: number): void {
     this.clienteService.findOne(id).subscribe(res =>
     this.objeto.vendedor = res
