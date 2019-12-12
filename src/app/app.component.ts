@@ -61,6 +61,11 @@ export class AppComponent implements OnInit {
         routerLink: 'pedido',
         icon: 'pi pi-id-card',
       },
+      {
+        label: 'Relatorios',
+        routerLink: 'relatorio',
+        icon: 'fas fa-chart-line',
+      }
     ]
   }
 }

@@ -35,6 +35,7 @@ import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 import {NgxMaskModule} from 'ngx-mask';
 import { ClientesComponent } from './auth/clientes/clientes.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ClientesComponent } from './auth/clientes/clientes.component';
     PedidoComponent,
     PedidoFormComponent,
     ClientesComponent,
+    RelatorioComponent,
   ],
   imports: [
     BrowserAnimationsModule,
