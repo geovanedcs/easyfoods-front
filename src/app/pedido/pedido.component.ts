@@ -75,7 +75,6 @@ export class PedidoComponent implements OnInit {
     this.pedidoService.findAll().subscribe(res => {
       this.lista = res;
       setTimeout(() => this.loading = false);
-      console.log(this.lista);
     });
   }
 
