@@ -44,97 +44,102 @@
 
 <!--INÍCIO DIALOG RELATORIO DE PEDIDOS-->
 <p-dialog header="Lista de Pedidos"
-          [visible]="display" class="p-2 saiScroll"
-          [style]="{Width: '75vh', maxHeight: '80vh'}"
+          [style]="{Width: '90vh!important', maxHeight: '80vh'}"
+          [visible]="display" class="p-2"
           [modal]="true" [positionTop]="15"
           [closable]="false">
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <!--    Inicio lista marmitas e quantidades-->
-        <div class="col-8">
-          <p-table [value]="totalMarmitaPeso">
-            <ng-template pTemplate="header">
+  <div class="blocoModal">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <!--    Inicio lista marmitas e quantidades-->
+          <div class="col-8">
+            <p-table [value]="totalMarmitaPeso">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th *ngFor="let col of colPeso">
+                    {{col?.header}}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template let-rowData pTemplate="body">
+                <tr>
+                  <td *ngFor="let col of colPeso">
+                    {{rowData[col?.field]}}
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+          <!--    Final lista marmitas e quantidades-->
+          <!--        Inicio Total de todas as marmitas-->
+          <div class="col-4">
+            <p>Total de Pedidos: {{totalPedido | currency: 'BRL'}}</p>
+          </div>
+          <!--        Inicio Total de todas as marmitas-->
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-12">
+          <p-table [value]="listaPedidos">
+            <ng-template pTemplate="header" let-columns>
               <tr>
-                <th *ngFor="let col of colPeso">
-                  {{col?.header}}
+                <th>
+                  Data do Pedido
                 </th>
+                <th>
+                  Cliente
+                </th>
+                <th>
+                  Quantidade
+                </th>
+                <th>
+                  Peso
+                </th>
+                <th>
+                  Total
+                </th>
+                <th>
+                  Status
+                </th>
+
+                <th class="text-center">Ações</th>
               </tr>
             </ng-template>
-            <ng-template let-rowData pTemplate="body">
+            <ng-template let-columns="columns" let-rowData pTemplate="body">
               <tr>
-                <td *ngFor="let col of colPeso">
-                  {{rowData[col?.field]}}
+                <td>
+                  {{rowData.dataPedido | date:'dd/MM/yyyy'}}
+                </td>
+                <td>
+                  {{rowData.nome}}
+                </td>
+                <td>
+                  {{rowData.quantidade}}
+                </td>
+                <td>
+                  {{rowData.peso}}
+                </td>
+                <td>
+                  {{rowData.total | currency: 'BRL'}}
+                </td>
+                <td>
+                  {{mudaStatus(rowData.status)}}
+                </td>
+                <td class="text-center d-inline-flex">
+                  <button class="btn btn-primary"
+                          [disabled]="rowData.status == 0 || rowData.status == 2 || rowData.status == 3"
+                          (click)="entregar(rowData.idPedido)">Entregar</button>
+                  <button class="btn btn-primary"
+                          [disabled]="rowData.status == 0 || rowData.status == 3"
+                          (click)="receber(rowData.idPedido)">Receber</button>
                 </td>
               </tr>
             </ng-template>
           </p-table>
+          <button class="text-right btn btn-primary" (click)="fechar()">Fechar</button>
         </div>
-        <!--    Final lista marmitas e quantidades-->
-        <!--        Inicio Total de todas as marmitas-->
-        <div class="col-4">
-          <p>Total de Pedidos: {{totalPedido | currency: 'BRL'}} R$</p>
-        </div>
-        <!--        Inicio Total de todas as marmitas-->
-      </div>
-    </div>
-    <div class="row p-2">
-      <div class="col-12">
-        <p-table [value]="listaPedidos">
-          <ng-template pTemplate="header" let-columns>
-            <tr>
-              <th>
-                Data do Pedido
-              </th>
-              <th>
-                Cliente
-              </th>
-              <th>
-                Quantidade
-              </th>
-              <th>
-                Peso
-              </th>
-              <th>
-                Total
-              </th>
-              <th>
-                Status
-              </th>
-
-              <th class="text-center">Ações</th>
-            </tr>
-          </ng-template>
-          <ng-template let-columns="columns" let-rowData pTemplate="body">
-            <tr>
-              <td>
-                {{rowData.dataPedido | date:'dd/MM/yyyy'}}
-              </td>
-              <td>
-                {{rowData.nome}}
-              </td>
-              <td>
-                {{rowData.quantidade}}
-              </td>
-              <td>
-                {{rowData.peso}}
-              </td>
-              <td>
-                {{rowData.total | currency: 'BRL'}}
-              </td>
-              <td>
-                {{mudaStatus(rowData.status)}}
-              </td>
-              <td class="text-center d-inline-flex">
-                <button class="btn btn-primary" (click)="entregar(rowData.idPedido)">Entregar</button>
-                <button class="btn btn-primary" (click)="receber(rowData.idPedido)">Receber</button>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
-        <button class="text-right btn btn-primary" (click)="fechar()">Fechar</button>
       </div>
     </div>
   </div>
-
 </p-dialog>
