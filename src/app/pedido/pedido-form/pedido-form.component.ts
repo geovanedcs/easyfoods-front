@@ -42,7 +42,6 @@ export class PedidoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // @ts-ignore
     this.hoje = new Date();
     this.agendar(this.hoje.getDay());
     this.activatedRoute.queryParamMap.subscribe(params => {

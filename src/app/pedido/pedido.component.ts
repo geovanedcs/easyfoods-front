@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PedidoService} from "../service/pedido.service";
 import {Title} from "@angular/platform-browser";
 import {Pedido} from "../model/pedido";
-import {Cliente} from "../model/cliente";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MarmitaService} from "../service/marmita.service";
-import {UserService} from "../service/user.service";
-import {CardapioService} from "../service/cardapio.service";
-import {ClienteService} from "../service/cliente.service";
-import {MessageService} from "primeng";
+import {ConfirmationService, MessageService} from 'primeng';
 
 @Component({
   selector: 'app-pedido',
@@ -24,8 +19,8 @@ export class PedidoComponent implements OnInit {
               private titleService: Title,
               private activatedRoute: ActivatedRoute,
               private messageService: MessageService,
-              private router: Router
-              ) {
+              private router: Router,
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
@@ -44,7 +39,16 @@ export class PedidoComponent implements OnInit {
     return null;
   }
 
-  cancela(id: number): void {
+  cancelarPedido(id: number): void {
+    this.confirmationService.confirm({
+      message: 'Você tem certeza que deseja cancelar esse pedido?',
+      accept: () => this.cancela(id),
+      acceptLabel: 'SIM',
+      rejectLabel: 'NÃO',
+    });
+  }
+
+  private cancela(id: number): void {
 
       this.pedidoService.findOne(id).subscribe(res => {
         this.objeto = res;
@@ -56,7 +60,7 @@ export class PedidoComponent implements OnInit {
           console.log(this.objeto);
           this.messageService.add({
             severity: 'success',
-            summary: 'Salvo com sucesso!',
+            summary: 'Cancelado com sucesso!',
           });
           this.carregaLista();
           this.router.navigateByUrl('pedido');

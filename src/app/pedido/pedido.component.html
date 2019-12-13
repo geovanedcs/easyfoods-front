@@ -62,7 +62,7 @@
                    [routerLink]="['form']"
                    class="pi pi-pencil"
                    title="Editar"></i>
-                <a><i (click)="cancela(rowData['id'])"
+                <a><i (click)="cancelarPedido(rowData['id'])"
                    class="pi pi-trash"
                    title="cancelar">  </i>
                 </a>
@@ -78,3 +78,4 @@
   </div>
 </div>
 
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
