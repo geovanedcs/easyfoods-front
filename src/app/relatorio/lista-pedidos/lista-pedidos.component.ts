@@ -53,13 +53,13 @@ export class ListaPedidosComponent implements OnInit {
 
   relatorioPedidos(): void {
     this.display = true;
-    this.relatorioService.listaPedidos(this.dataIni, this.dataIni, this.status).subscribe(res => {
+    this.relatorioService.listaPedidos(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.listaPedidos = res;
     });
-    this.relatorioService.totalMarmitaPeso(this.dataIni, this.dataIni, this.status).subscribe(res => {
+    this.relatorioService.totalMarmitaPeso(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.totalMarmitaPeso = res;
     });
-    this.relatorioService.totalPedido(this.dataIni, this.dataIni, this.status).subscribe(res => {
+    this.relatorioService.totalPedido(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.totalPedido = res;
     });
   }
