@@ -34,14 +34,6 @@ export class ClientesComponent implements OnInit {
     this.titleService.setTitle('Lista de Clientes');
   }
 
-  excluir(id: number): void {
-    this.confirmationService.confirm({
-      message: 'Você tem certeza que deseja excluir esse cliente?',
-      accept: () => this.deletar(id),
-      acceptLabel: 'SIM',
-      rejectLabel: 'NÃO',
-    });
-  }
 
   carregarLista(): void {
     this.loading = true;
