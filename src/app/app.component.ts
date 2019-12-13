@@ -71,8 +71,16 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'Relatorios',
-        routerLink: 'relatorio',
         icon: 'fas fa-chart-line',
+        items: [{
+          label: 'Pedidos',
+          routerLink: 'relatorio',
+          icon: 'pi pi-fw pi-plus',
+        },
+          {label: 'Teste', icon: 'pi pi-fw pi-external-link'},
+          {separator: true},
+          {label: 'Quit', icon: 'pi pi-fw pi-times'}
+        ],
         visible: nCliente
       }
     ];
