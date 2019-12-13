@@ -61,12 +61,15 @@ export class ListaPedidosComponent implements OnInit {
 
   relatorioPedidos(): void {
     this.display = true;
+    // @ts-ignore
     this.relatorioService.listaPedidos(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.listaPedidos = res;
     });
+    // @ts-ignore
     this.relatorioService.totalMarmitaPeso(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.totalMarmitaPeso = res;
     });
+    // @ts-ignore
     this.relatorioService.totalPedido(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.totalPedido = res;
     });

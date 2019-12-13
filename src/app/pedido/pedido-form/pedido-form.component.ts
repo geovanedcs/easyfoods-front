@@ -42,6 +42,7 @@ export class PedidoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
     this.hoje = new Date();
     this.agendar(this.hoje.getDay());
     this.activatedRoute.queryParamMap.subscribe(params => {
@@ -117,5 +118,11 @@ export class PedidoFormComponent implements OnInit {
     this.objeto.vendedor = res
     );
   }
+
+  validaDia():void{
+
+  }
+
 }
+
 

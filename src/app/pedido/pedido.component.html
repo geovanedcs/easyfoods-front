@@ -12,12 +12,9 @@
         <p-table (onLazyLoad)="carregaLista()"
                  [lazy]="true"
                  [loading]="loading"
-                 [value]="lista">
+                 [value]="lista" [paginator]="true" [rows]="9">
           <ng-template pTemplate="header" let-columns>
             <tr>
-              <th>
-                Cliente
-              </th>
               <th>
                 Vendedor
               </th>
@@ -33,40 +30,34 @@
               <th>
                 Status
               </th>
-
               </tr>
           </ng-template>
           <ng-template let-columns="columns" let-rowData pTemplate="body">
             <tr>
               <td>
-                {{rowData.cliente.nome}}
+                {{rowData?.vendedor.nome}}
               </td>
               <td>
-                {{rowData.vendedor.nome}}
+                {{rowData?.dataPedido}}
               </td>
               <td>
-                {{rowData.dataPedido}}
+                {{rowData?.tamanhoMarmita.pesoMarmita}}
               </td>
               <td>
-                {{rowData.tamanhoMarmita.pesoMarmita}}
-              </td>
-              <td>
-                {{rowData.quantidade}}
+                {{rowData?.quantidade}}
               </td>
               <td>
                 {{mudaStatus(rowData.status)}}
-                <button *ngIf="mudaStatus(rowData.status) == 'solicitado'"
+                <button *ngIf="rowData.dataPedido > this.dia || rowData.dataPedido == this.dia && this.dia.getHours() <= 10 "
                   [queryParams]="{id: rowData['id']}"
                         [routerLink]="['form']"
                         class="pi pi-pencil"
                         title="Editar"></button>
-                <button *ngIf="mudaStatus(rowData.status) == 'solicitado'"
+                <button *ngIf="rowData.status != 0 && rowData.dataPedido == dia && dia.getHours() < 10"
                   (click)="cancelarPedido(rowData['id'])"
                         class="mr-0 ml-2 pi pi-trash"
                         title="cancelar">  </button>
-
               </td>
-
             </tr>
           </ng-template>
           <ng-template pTemplate="emptymessage">
@@ -77,5 +68,4 @@
     </div>
   </div>
 </div>
-
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
