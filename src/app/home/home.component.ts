@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {CardapioService} from '../service/cardapio.service';
 import {Title} from '@angular/platform-browser';
 import {Cardapio} from '../model/cardapio';
@@ -6,13 +6,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Pedido} from "../model/pedido";
 import {PedidoService} from "../service/pedido.service";
 import * as moment from "moment";
+import {SidebarService} from "../service/sidebar.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+
   col: any[];
   lista: Cardapio[];
   loading = false;
@@ -68,5 +70,8 @@ export class HomeComponent implements OnInit {
 
   agendar(id: number): void {
     this.router.navigate(['/pedido/form'], {queryParams: {idDia: id}});
+  }
+  ngOnDestroy(): void {
+
   }
 }
