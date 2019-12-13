@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row px-4">
   <div class="col-12">
     <!--    Inicio Datas-->
     <div class="row py-3">
@@ -28,14 +28,19 @@
     </div>
     <div class="row m-3 text-right">
       <div class="col-12">
-        <button class="btn btn-secondary" (click)="relatorioPedidos()">Botão Mágico</button>
+        <button class="btn btn-secondary" (click)="relatorioPedidos()">Buscar</button>
       </div>
     </div>
   </div>
 </div>
 
 <!--INÍCIO DIALOG RELATORIO DE PEDIDOS-->
-<div header="Lista de Pedidos">
+<p-dialog header="Lista de Pedidos"
+          [visible]="display" class="p-2 saiScroll"
+          [style]="{Width: '75vh', maxHeight: '80vh'}"
+          [modal]="true" [positionTop]="15"
+          [closable]="false"
+          [draggable]="true">
   <div class="row">
     <div class="col-12">
       <div class="row">
@@ -61,13 +66,13 @@
         <!--    Final lista marmitas e quantidades-->
         <!--        Inicio Total de todas as marmitas-->
         <div class="col-4">
-          <p>{{totalPedido}}</p>
+          <p>Total de Pedidos: {{totalPedido | currency: 'BRL'}} R$</p>
         </div>
         <!--        Inicio Total de todas as marmitas-->
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 py-2">
+    <div class="row p-2">
+      <div class="col-12">
         <p-table [value]="listaPedidos">
           <ng-template pTemplate="header" let-columns>
             <tr>
@@ -96,7 +101,7 @@
           <ng-template let-columns="columns" let-rowData pTemplate="body">
             <tr>
               <td>
-                {{rowData.dataPedido}}
+                {{rowData.dataPedido | date:'dd/MM/yyyy'}}
               </td>
               <td>
                 {{rowData.nome}}
@@ -108,19 +113,21 @@
                 {{rowData.peso}}
               </td>
               <td>
-                {{rowData.total}}
+                {{rowData.total | currency: 'BRL'}}
               </td>
               <td>
-                {{rowData.status}}
+                {{mudaStatus(rowData.status)}}
               </td>
-              <td class="text-center">
-                <button class="btn btn-success" (click)="entregar(rowData.idPedido)">Entregar</button>
-                <button class="btn btn-success" (click)="receber(rowData.idPedido)">Receber</button>
+              <td class="text-center d-inline-flex">
+                <button class="btn btn-primary" (click)="entregar(rowData.idPedido)">Entregar</button>
+                <button class="btn btn-primary" (click)="receber(rowData.idPedido)">Receber</button>
               </td>
             </tr>
           </ng-template>
         </p-table>
+        <button class="text-right btn btn-primary" (click)="fechar()">Fechar</button>
       </div>
     </div>
   </div>
-</div>
+
+</p-dialog>

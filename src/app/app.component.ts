@@ -15,22 +15,23 @@ export class AppComponent implements OnInit {
   isLogado: boolean;
   menuList: MenuItem[];
 
-  constructor(private sidebarService: SidebarService, private authService: AuthService, private userUser: UserService) {
+  constructor(private sidebarService: SidebarService, private authService: AuthService, private userService: UserService) {
     this.isLogado = sidebarService.CheckLogado();
     this.sidebarService.getMostrar$().subscribe(val => this.displaySidebar = val);
   }
   ngOnInit(): void {
     this.sidebarService.setMostrar(false);
     this.renderizaMenu();
-    this.isLogado = this.userUser.isLogged();
+    this.isLogado = this.userService.isLogged();
     this.authService.logOn.asObservable().subscribe(res => {
       this.isLogado = res;
     });
   }
 
   abrirFecharMenu() {
-    this.renderizaMenu();
     this.sidebarService.setMostrar(!this.displaySidebar);
+    this.renderizaMenu();
+
   }
 
   checkRole(): boolean {
@@ -39,35 +40,41 @@ export class AppComponent implements OnInit {
 
   renderizaMenu(): void {
     this.isLogado = this.sidebarService.CheckLogado();
-    const nCliente: boolean = this.checkRole();
+    const rVendedor: boolean = this.checkRole();
     this.menuList = [
       {
         label: 'Home',
         routerLink: '/',
         icon: 'pi pi-home',
+        command: () => {this.abrirFecharMenu(); }
       },
       {
         label: 'Comidas',
         routerLink: 'comida',
         icon: 'fas fa-utensils',
-        visible: nCliente
+        visible: rVendedor,
+        command: () => {this.abrirFecharMenu(); }
       },
       {
         label: 'Ingredientes',
         routerLink: 'ingrediente',
         icon: 'fas fa-utensils',
-        visible: nCliente
+        visible: rVendedor,
+        command: () => {this.abrirFecharMenu(); }
       },
       {
         label: 'Cardápios',
         routerLink: 'cardapio',
         icon: 'pi pi-list',
-        visible: nCliente
+        visible: rVendedor,
+        command: () => {this.abrirFecharMenu(); }
       },
       {
         label: 'Pedidos',
         routerLink: 'pedido',
         icon: 'pi pi-id-card',
+        visible: this.userService.isLogged(),
+        command: () => {this.abrirFecharMenu(); }
       },
       {
         label: 'Relatorios',
@@ -76,12 +83,9 @@ export class AppComponent implements OnInit {
           label: 'Pedidos',
           routerLink: 'relatorio',
           icon: 'pi pi-fw pi-plus',
-        },
-          {label: 'Teste', icon: 'pi pi-fw pi-external-link'},
-          {separator: true},
-          {label: 'Quit', icon: 'pi pi-fw pi-times'}
-        ],
-        visible: nCliente
+          command: () => {this.abrirFecharMenu(); }
+        }],
+        visible: rVendedor,
       }
     ];
   }

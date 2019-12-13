@@ -7,6 +7,7 @@ import {Title} from '@angular/platform-browser';
 import {PedidoService} from "../../service/pedido.service";
 import {Pedido} from "../../model/pedido";
 import {Observable} from "rxjs";
+import {MessageService} from "primeng";
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -33,6 +34,7 @@ export class ListaPedidosComponent implements OnInit {
 
   constructor(private relatorioService: RelatorioService,
               private pedidoService: PedidoService,
+              private messageService: MessageService,
               private titleService: Title) {
   }
 
@@ -41,7 +43,7 @@ export class ListaPedidosComponent implements OnInit {
     this.listaStatus = [
       {value: 'CANCELADO', label: 'Cancelado'},
       {value: 'SOLICITADO', label: 'Solicitado'},
-      {value: 'PENDENTE', label: 'Pendente'},
+      {value: 'PENDENTE', label: 'Entregue'},
       {value: 'PAGO', label: 'Pago'}
     ];
     this.colPeso = [
@@ -78,17 +80,49 @@ export class ListaPedidosComponent implements OnInit {
   entregar(idPedido: number):void {
     this.pedidoService.findOne(idPedido).subscribe(res => {
       this.pedidoItem = res;
+      this.pedidoItem.status = 2;
+      console.log(this.pedidoItem);
+      this.pedidoService.save(this.pedidoItem).subscribe(res => this.pedidoItem = res);
+      this.display = false;
+      this.relatorioPedidos();
+      setTimeout(() => 300);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Pedido Entregue, aguardando pagamento!!',
+      });
     });
-    this.pedidoItem.status = 2;
-    this.pedidoService.save(this.pedidoItem);
+
   }
 
   receber(idPedido: number):void {
     this.pedidoService.findOne(idPedido).subscribe(res => {
       this.pedidoItem = res;
+      this.pedidoItem.status = 3;
+      this.pedidoService.save(this.pedidoItem).subscribe(res => this.pedidoItem = res);
+      this.display = false;
+      this.relatorioPedidos();
+      setTimeout(() => 300);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Pedido Pago!',
+      });
     });
-    this.pedidoItem.status = 3;
-    this.pedidoService.save(this.pedidoItem);
   }
 
+  mudaStatus(status: number) :string {
+    if(status == 0){
+      return  "Cancelado";
+    }else if(status == 1){
+      return  "Solicitado";
+    }else if(status == 2){
+      return  "Entregue";
+    }else if(status == 3){
+      return  "Pago";
+    }
+    return null;
+  }
+
+  fechar() {
+    this.display = false;
+  }
 }
