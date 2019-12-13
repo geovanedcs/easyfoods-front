@@ -13,7 +13,7 @@ export class VendedorGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.userService.isLogged() && AuthService.role == 'Vendedor') {
+    if (this.userService.isLogged() && (AuthService.role === 'Vendedor' || AuthService.role === 'Administrador')) {
       return true;
     }
     this.router.navigate(['']);
