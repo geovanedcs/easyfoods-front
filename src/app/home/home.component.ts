@@ -5,6 +5,7 @@ import {Cardapio} from '../model/cardapio';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Pedido} from "../model/pedido";
 import {PedidoService} from "../service/pedido.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-home',
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
     this.titleService.setTitle('EasyFoods');
     this.carregaLista();
     // @ts-ignore
-    this.dia = new Date();
+    this.dia = moment().add(3,'d').toDate();
   }
 
   carregaLista(): void {
