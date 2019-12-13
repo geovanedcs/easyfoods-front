@@ -10,7 +10,8 @@
                             autoDisplayFirst
                             [options]="tamanhoMarmitaList"
                             [(ngModel)]="objeto.tamanhoMarmita"
-                            optionLabel="pesoMarmita">
+                            optionLabel="pesoMarmita"
+                            required>
                 </p-dropdown>
                 <label for="tamanhoMarmita">Tamanho da Marmita</label>
               </span>
@@ -18,8 +19,10 @@
                 <input [(ngModel)]="objeto.quantidade"
                        type="number"
                        id="quantidade"
-                       pInputText size="30">
+                       pInputText size="30"
+                       required="true" min="1" msgErro="">
                 <label for="quantidade">Quantidade</label>
+
               </span>
           </div>
         </div>
