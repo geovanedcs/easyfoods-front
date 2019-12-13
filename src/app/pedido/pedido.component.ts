@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {PedidoService} from "../service/pedido.service";
-import {Title} from "@angular/platform-browser";
-import {Pedido} from "../model/pedido";
-import {ActivatedRoute, Router} from "@angular/router";
+import {PedidoService} from '../service/pedido.service';
+import {Title} from '@angular/platform-browser';
+import {Pedido} from '../model/pedido';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationService, MessageService} from 'primeng';
-import {Cliente} from "../model/cliente";
-import {UserService} from "../service/user.service";
+import {Cliente} from '../model/cliente';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-pedido',
@@ -29,7 +29,7 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUser().subscribe(res=>{
+    this.userService.getUser().subscribe(res => {
       this.user = res;
       this.carregaLista();
     });
@@ -37,15 +37,15 @@ export class PedidoComponent implements OnInit {
     // @ts-ignore
     this.dia = new Date();
   }
-  mudaStatus(status: number) :string {
-    if(status == 0){
-      return  "Cancelado";
-    }else if(status == 1){
-      return  "Solicitado";
-    }else if(status == 2){
-      return  "Pendente";
-    }else if(status == 3){
-      return  "Ok";
+  mudaStatus(status: number): string {
+    if (status == 0) {
+      return  'Cancelado';
+    } else if (status == 1) {
+      return  'Solicitado';
+    } else if (status == 2) {
+      return  'Pendente';
+    } else if (status == 3) {
+      return  'Pago';
     }
     return null;
   }
