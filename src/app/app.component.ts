@@ -83,9 +83,9 @@ export class AppComponent implements OnInit {
           label: 'Pedidos',
           routerLink: 'relatorio',
           icon: 'pi pi-fw pi-plus',
+          command: () => {this.abrirFecharMenu(); }
         }],
         visible: rVendedor,
-        command: () => {this.abrirFecharMenu(); }
       }
     ];
   }
