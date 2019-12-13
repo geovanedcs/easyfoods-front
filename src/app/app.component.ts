@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng';
 import {SidebarService} from './service/sidebar.service';
-import {UserService} from "./service/user.service";
-import {AuthService} from "./service/auth.service";
+import {UserService} from './service/user.service';
+import {AuthService} from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -33,8 +33,13 @@ export class AppComponent implements OnInit {
     this.sidebarService.setMostrar(!this.displaySidebar);
   }
 
+  checkRole(): boolean {
+    return AuthService.role === 'Vendedor' || AuthService.role === 'Administrador';
+  }
+
   renderizaMenu(): void {
     this.isLogado = this.sidebarService.CheckLogado();
+    const nCliente: boolean = this.checkRole();
     this.menuList = [
       {
         label: 'Home',
@@ -45,16 +50,19 @@ export class AppComponent implements OnInit {
         label: 'Comidas',
         routerLink: 'comida',
         icon: 'fas fa-utensils',
+        visible: nCliente
       },
       {
         label: 'Ingredientes',
         routerLink: 'ingrediente',
         icon: 'fas fa-utensils',
+        visible: nCliente
       },
       {
         label: 'Cardápios',
         routerLink: 'cardapio',
         icon: 'pi pi-list',
+        visible: nCliente
       },
       {
         label: 'Pedidos',
@@ -65,7 +73,8 @@ export class AppComponent implements OnInit {
         label: 'Relatorios',
         routerLink: 'relatorio',
         icon: 'fas fa-chart-line',
+        visible: nCliente
       }
-    ]
+    ];
   }
 }
