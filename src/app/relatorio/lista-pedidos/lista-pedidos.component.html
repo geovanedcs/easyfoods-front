@@ -4,13 +4,13 @@
     <div class="row py-3">
       <div class="col-6">
         <span class="ui-float-label">
-          <p-calendar id="dataIni" dataType="string" [(ngModel)]="dataIni" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+          <p-calendar id="dataIni" dataType="string" [(ngModel)]="dataIni" dateFormat="dd/mm/yy" [defaultDate]="dataAtual" [showIcon]="true"></p-calendar>
           <label for="dataIni">Data Início</label>
         </span>
       </div>
       <div class="col-6">
         <span class="ui-float-label">
-          <p-calendar id="dataFim" dataType="string" [(ngModel)]="dataFim" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+          <p-calendar id="dataFim" dataType="string" [(ngModel)]="dataFim" dateFormat="dd/mm/yy" [defaultDate]="dataAtual" [showIcon]="true"></p-calendar>
           <label for="dataFim">Data Final</label>
         </span>
       </div>

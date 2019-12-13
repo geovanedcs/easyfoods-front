@@ -8,6 +8,7 @@ import {PedidoService} from "../../service/pedido.service";
 import {Pedido} from "../../model/pedido";
 import {Observable} from "rxjs";
 import {MessageService} from "primeng";
+import {now} from "moment";
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -58,7 +59,6 @@ export class ListaPedidosComponent implements OnInit {
       {field: 'total', header: 'Total'},
       {field: 'status', header: 'Status'}
     ];
-
   }
 
   relatorioPedidos(): void {
