@@ -43,6 +43,7 @@
   <div class="text-right m-2">
     <button (click)="salvar()"
             class="ui-button-raised"
+            [disabled]="comida.invalid || selectedIngredientes.length < 1"
             label="Salvar"
             pButton
             type="button"></button>
