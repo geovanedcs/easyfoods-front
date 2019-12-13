@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CardapioService} from '../service/cardapio.service';
 import {Title} from '@angular/platform-browser';
 import {Cardapio} from '../model/cardapio';
@@ -23,8 +23,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private cardapioService: CardapioService,
               private titleService: Title,
-              private router: Router ,
-              private pedidoService: PedidoService) {
+              private router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
