@@ -17,6 +17,7 @@ export class PedidoComponent implements OnInit {
   loading = false;
   objeto: Pedido;
   user: Cliente;
+  dia: Date;
 
   constructor(private pedidoService: PedidoService,
               private titleService: Title,
@@ -33,6 +34,8 @@ export class PedidoComponent implements OnInit {
       this.carregaLista();
     });
     this.titleService.setTitle('Lista de Pedidos');
+    // @ts-ignore
+    this.dia = new Date();
   }
   mudaStatus(status: number) :string {
     if(status == 0){

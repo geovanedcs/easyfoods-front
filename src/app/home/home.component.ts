@@ -3,6 +3,9 @@ import {CardapioService} from '../service/cardapio.service';
 import {Title} from '@angular/platform-browser';
 import {Cardapio} from '../model/cardapio';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Pedido} from "../model/pedido";
+import {PedidoService} from "../service/pedido.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-home',
@@ -14,13 +17,14 @@ export class HomeComponent implements OnInit {
   lista: Cardapio[];
   loading = false;
   deHoje: Cardapio;
-  // @ts-ignore
-  dia = new Date();
+  dia: Date;
+  objeto: Pedido;
   responsiveOptions;
 
   constructor(private cardapioService: CardapioService,
               private titleService: Title,
-              private router: Router) {
+              private router: Router ,
+              private pedidoService: PedidoService) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -43,7 +47,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('EasyFoods');
     this.carregaLista();
-
+    // @ts-ignore
+    this.dia = moment().add(3,'d').toDate();
   }
 
   carregaLista(): void {
@@ -58,6 +63,8 @@ export class HomeComponent implements OnInit {
       setTimeout(() => this.loading = false);
     });
   }
+
+
 
   agendar(id: number): void {
     this.router.navigate(['/pedido/form'], {queryParams: {idDia: id}});

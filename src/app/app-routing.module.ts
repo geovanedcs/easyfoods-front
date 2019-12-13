@@ -62,7 +62,7 @@ const routes: Routes = [
     path: 'cadastro', component: CadastroComponent
   },
   {
-    path: 'logout', component: SignoutComponent, canActivate: [AuthGuard]
+    path: 'logout', component: SignoutComponent
   },
   {
     path: 'clientes', component: ClientesComponent, canActivate: [VendedorGuard]
