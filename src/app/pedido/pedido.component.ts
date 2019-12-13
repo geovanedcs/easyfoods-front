@@ -4,6 +4,8 @@ import {Title} from "@angular/platform-browser";
 import {Pedido} from "../model/pedido";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationService, MessageService} from 'primeng';
+import {Cliente} from "../model/cliente";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-pedido',
@@ -14,16 +16,22 @@ export class PedidoComponent implements OnInit {
   lista: Pedido[];
   loading = false;
   objeto: Pedido;
+  user: Cliente;
 
   constructor(private pedidoService: PedidoService,
               private titleService: Title,
               private activatedRoute: ActivatedRoute,
               private messageService: MessageService,
               private router: Router,
-              private confirmationService: ConfirmationService) {
+              private confirmationService: ConfirmationService,
+              private  userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.getUser().subscribe(res=>{
+      this.user = res;
+      this.carregaLista();
+    });
     this.titleService.setTitle('Lista de Pedidos');
   }
   mudaStatus(status: number) :string {
@@ -76,7 +84,7 @@ export class PedidoComponent implements OnInit {
 
   carregaLista(): void {
     this.loading = true;
-    this.pedidoService.findAll().subscribe(res => {
+    this.pedidoService.findPedidoByCliente(this.user.id).subscribe(res => {
       this.lista = res;
       setTimeout(() => this.loading = false);
     });

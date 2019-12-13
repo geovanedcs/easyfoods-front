@@ -12,6 +12,7 @@ import {ClienteService} from '../../service/cliente.service';
 import {CardapioService} from '../../service/cardapio.service';
 import {Cardapio} from '../../model/cardapio';
 import {map} from 'rxjs/operators';
+import {throwError} from "rxjs";
 
 
 @Component({
@@ -62,21 +63,28 @@ export class PedidoFormComponent implements OnInit {
 
   salvar(): void {
     console.log(this.objeto);
-    this.objeto.cliente = this.cliente;
-    this.pedidoService.save(this.objeto).subscribe(res => {
-      this.objeto = res;
-      console.log(this.objeto);
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Salvo com sucesso!',
-      });
+    if(this.objeto.quantidade>0) {
+      this.objeto.cliente = this.cliente;
+      this.pedidoService.save(this.objeto).subscribe(res => {
+        this.objeto = res;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Salvo com sucesso!',
+        });
+      }),
+        erro => {
+          this.messageService.add({
+            severity: 'error',
+            summary: erro.error.message,
+          })
+        };
       this.router.navigateByUrl('pedido');
-    }, erro => {
+    }else{
       this.messageService.add({
         severity: 'error',
-        summary: erro.error.message,
+        summary: 'Não pode estar vazio.',
       });
-    });
+    }
   }
 
   pedirDoDia(): void {

@@ -45,14 +45,14 @@
             <ng-template pTemplate="header">
               <tr>
                 <th *ngFor="let col of colPeso">
-                  {{col.header}}
+                  {{col?.header}}
                 </th>
               </tr>
             </ng-template>
             <ng-template let-rowData pTemplate="body">
               <tr>
                 <td *ngFor="let col of colPeso">
-                  {{rowData[col.field]}}
+                  {{rowData[col?.field]}}
                 </td>
               </tr>
             </ng-template>
