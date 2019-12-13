@@ -83,9 +83,9 @@ export class ListaPedidosComponent implements OnInit {
       this.pedidoItem.status = 2;
       console.log(this.pedidoItem);
       this.pedidoService.save(this.pedidoItem).subscribe(res => this.pedidoItem = res);
+      setTimeout(() => 300);
       this.display = false;
       this.relatorioPedidos();
-      setTimeout(() => 300);
       this.messageService.add({
         severity: 'success',
         summary: 'Pedido Entregue, aguardando pagamento!!',

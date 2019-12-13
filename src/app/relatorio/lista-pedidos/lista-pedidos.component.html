@@ -4,13 +4,19 @@
     <div class="row py-3">
       <div class="col-6">
         <span class="ui-float-label">
-          <p-calendar id="dataIni" dataType="string" [(ngModel)]="dataIni" dateFormat="dd/mm/yy" [defaultDate]="dataAtual" [showIcon]="true"></p-calendar>
+          <p-calendar id="dataIni" dataType="string"
+                      [(ngModel)]="dataIni"
+                      dateFormat="dd/mm/yy"
+                      [showIcon]="true" required></p-calendar>
           <label for="dataIni">Data Início</label>
         </span>
       </div>
       <div class="col-6">
         <span class="ui-float-label">
-          <p-calendar id="dataFim" dataType="string" [(ngModel)]="dataFim" dateFormat="dd/mm/yy" [defaultDate]="dataAtual" [showIcon]="true"></p-calendar>
+          <p-calendar id="dataFim" dataType="string"
+                      [(ngModel)]="dataFim"
+                      dateFormat="dd/mm/yy"
+                      [showIcon]="true" required></p-calendar>
           <label for="dataFim">Data Final</label>
         </span>
       </div>
@@ -20,8 +26,10 @@
     <div class="row py-3">
       <div class="col-12">
         <span class="ui-float-label">
-          <p-dropdown id="status" [options]="listaStatus" [(ngModel)]="status"
-                      placeholder="Selecione o Status do Pedido" [showClear]="true"></p-dropdown>
+          <p-dropdown id="status" [options]="listaStatus"
+                      [(ngModel)]="status"
+                      placeholder="Selecione o Status do Pedido"
+                      [showClear]="true" required></p-dropdown>
         </span>
       </div>
       <!--    Fim Status-->
