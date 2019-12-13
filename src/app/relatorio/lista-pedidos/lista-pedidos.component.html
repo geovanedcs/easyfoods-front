@@ -35,7 +35,7 @@
 </div>
 
 <!--INÍCIO DIALOG RELATORIO DE PEDIDOS-->
-<p-dialog header="Title" [(visible)]="display">
+<div header="Lista de Pedidos">
   <div class="row">
     <div class="col-12">
       <div class="row">
@@ -65,7 +65,7 @@
         </div>
         <!--        Inicio Total de todas as marmitas-->
       </div>
-      <div class="col-12">
+      <div class="col-12 tiraPadding py-2">
         <p-table [value]="listaPedidos">
           <ng-template pTemplate="header">
             <tr >
@@ -86,4 +86,4 @@
       </div>
     </div>
   </div>
-</p-dialog>
+</div>

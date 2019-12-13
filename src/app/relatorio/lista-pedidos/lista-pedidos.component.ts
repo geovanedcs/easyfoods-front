@@ -47,6 +47,7 @@ export class ListaPedidosComponent implements OnInit {
       {field: 'quantidade', header: 'Quantidade'},
       {field: 'peso', header: 'Peso'},
       {field: 'total', header: 'Total'},
+      {field: 'status', header: 'Status'}
     ];
 
   }
