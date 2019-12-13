@@ -12,7 +12,8 @@
         <p-table (onLazyLoad)="carregaLista()"
                  [lazy]="true"
                  [loading]="loading"
-                 [value]="lista" [paginator]="true" [rows]="9">
+                 [value]="lista"
+                 [paginator]="true" [rows]="9">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th>
@@ -48,12 +49,12 @@
               </td>
               <td>
                 {{mudaStatus(rowData.status)}}
-                <button *ngIf="rowData.dataPedido > this.dia || rowData.dataPedido == this.dia && this.dia.getHours() <= 10 "
+                <button *ngIf="rowData.dataPedido > dia || rowData.dataPedido == dia && dia.getHours() < 10"
                   [queryParams]="{id: rowData['id']}"
                         [routerLink]="['form']"
                         class="pi pi-pencil"
                         title="Editar"></button>
-                <button *ngIf="rowData.status != 0 && rowData.dataPedido == dia && dia.getHours() < 10"
+                <button *ngIf="rowData.status != 0 && rowData.dataPedido > dia || rowData.dataPedido == dia && dia.getHours() < 10"
                   (click)="cancelarPedido(rowData['id'])"
                         class="mr-0 ml-2 pi pi-trash"
                         title="cancelar">  </button>

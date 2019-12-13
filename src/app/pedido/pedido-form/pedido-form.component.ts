@@ -72,14 +72,15 @@ export class PedidoFormComponent implements OnInit {
           severity: 'success',
           summary: 'Salvo com sucesso!',
         });
-      }),
+          this.router.navigateByUrl('pedido');
+      },
         erro => {
           this.messageService.add({
             severity: 'error',
             summary: erro.error.message,
           })
-        };
-      this.router.navigateByUrl('pedido');
+        }
+      );
     }else{
       this.messageService.add({
         severity: 'error',
@@ -102,7 +103,7 @@ export class PedidoFormComponent implements OnInit {
     let dia = moment();
     this.objeto = new Pedido();
     if (idCardapio) {
-      dia = moment().add(idCardapio, 'd').subtract(this.hoje.getDay(), 'd');
+      dia = moment().add(idCardapio, 'd').add(7, 'd').subtract(this.hoje.getDay(), 'd');
     }
 
     this.objeto.dataPedido = dia.toDate();
