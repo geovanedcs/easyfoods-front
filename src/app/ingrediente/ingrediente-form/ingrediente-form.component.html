@@ -4,7 +4,6 @@
       <div>
         <div class="row">
           <div class="col-12">
-            <form></form>
             <span class="ui-float-label my-2">
                   <input [(ngModel)]="objeto.ingrediente"
                          id="ingrediente"
@@ -34,6 +33,7 @@
         <div class="text-right m-2">
           <button (click)="salvar()"
                   class="ui-button-raised"
+                  [disabled]="ingrediente.invalid"
                   label="Salvar"
                   pButton
                   type="button"></button>
