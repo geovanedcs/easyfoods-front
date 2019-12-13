@@ -65,20 +65,57 @@
         </div>
         <!--        Inicio Total de todas as marmitas-->
       </div>
-      <div class="col-12 tiraPadding py-2">
+    </div>
+    <div class="row">
+      <div class="col-12 py-2">
         <p-table [value]="listaPedidos">
-          <ng-template pTemplate="header">
-            <tr >
-              <th *ngFor="let col of colPedido">{{col.header}}</th>
-              <th>Ações</th>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th>
+                Data do Pedido
+              </th>
+              <th>
+                Cliente
+              </th>
+              <th>
+                Quantidade
+              </th>
+              <th>
+                Peso
+              </th>
+              <th>
+                Total
+              </th>
+              <th>
+                Status
+              </th>
+
+              <th class="text-center">Ações</th>
             </tr>
           </ng-template>
-          <ng-template let-rowData pTemplate="body">
+          <ng-template let-columns="columns" let-rowData pTemplate="body">
             <tr>
-              <td *ngFor="let col of colPedido">{{rowData[col.field]}}</td>
               <td>
-                <button class="btn btn-primary">Entregar</button>
-                <button class="btn btn-primary">Pagar</button>
+                {{rowData.dataPedido}}
+              </td>
+              <td>
+                {{rowData.nome}}
+              </td>
+              <td>
+                {{rowData.quantidade}}
+              </td>
+              <td>
+                {{rowData.peso}}
+              </td>
+              <td>
+                {{rowData.total}}
+              </td>
+              <td>
+                {{rowData.status}}
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success" (click)="entregar(rowData.idPedido)">Entregar</button>
+                <button class="btn btn-success" (click)="receber(rowData.idPedido)">Receber</button>
               </td>
             </tr>
           </ng-template>

@@ -1,4 +1,5 @@
 export class ListaPedidos {
+  idPedido: number;
   dataPedido: Date;
   nome: string;
   quantidade: number;

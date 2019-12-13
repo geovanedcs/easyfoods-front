@@ -4,6 +4,9 @@ import {TotalMarmitaPeso} from '../../model/relatorio/totalMarmitaPeso';
 import {TotalPedido} from '../../model/relatorio/totalPedido';
 import {RelatorioService} from '../../service/relatorio.service';
 import {Title} from '@angular/platform-browser';
+import {PedidoService} from "../../service/pedido.service";
+import {Pedido} from "../../model/pedido";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -12,6 +15,7 @@ import {Title} from '@angular/platform-browser';
 })
 export class ListaPedidosComponent implements OnInit {
 
+  pedidoItem: Pedido;
   listaPedidos: ListaPedidos[];
   totalMarmitaPeso: TotalMarmitaPeso[];
   totalPedido: TotalPedido;
@@ -19,13 +23,16 @@ export class ListaPedidosComponent implements OnInit {
   colPeso: any[];
   colPedido: any[];
 
+
   // Filtros
   dataIni: Date;
   dataFim: Date;
   status: string;
   display = false;
 
+
   constructor(private relatorioService: RelatorioService,
+              private pedidoService: PedidoService,
               private titleService: Title) {
   }
 
@@ -64,4 +71,21 @@ export class ListaPedidosComponent implements OnInit {
       this.totalPedido = res;
     });
   }
+
+  entregar(idPedido: number):void {
+    this.pedidoService.findOne(idPedido).subscribe(res => {
+      this.pedidoItem = res;
+    });
+    this.pedidoItem.status = 2;
+    this.pedidoService.save(this.pedidoItem);
+  }
+
+  receber(idPedido: number):void {
+    this.pedidoService.findOne(idPedido).subscribe(res => {
+      this.pedidoItem = res;
+    });
+    this.pedidoItem.status = 3;
+    this.pedidoService.save(this.pedidoItem);
+  }
+
 }
