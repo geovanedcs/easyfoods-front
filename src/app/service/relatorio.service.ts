@@ -12,11 +12,9 @@ import {MenuItem} from "primeng";
   providedIn: 'root'
 })
 export class RelatorioService{
-  private endpoint: string;
   relatorioList: MenuItem[];
 
   constructor(protected http: HttpClient) {
-    this.endpoint = `${environment.api_url}/relatorio/`;
     this.relatorioList = [
       {
         label: 'Pedidos',
@@ -31,19 +29,19 @@ export class RelatorioService{
 
   //Do back
   protected getUrl(): string {
-    return `${environment.api_url}${this.endpoint}`;
+    return `${environment.api_url}relatorio/`;
   }
 
-  totalMarmitaPeso(dataIni: Date, dataFim: Date, status: number): Observable<TotalMarmitaPeso[]> {
-    return this.http.get<TotalMarmitaPeso[]>(`${this.getUrl()}/totalMarmitaPeso?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
+  totalMarmitaPeso(dataIni: Date, dataFim: Date, status: string): Observable<TotalMarmitaPeso[]> {
+    return this.http.get<TotalMarmitaPeso[]>(`${this.getUrl()}totalMarmitaPeso?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
   }
 
-  totalPedido(dataIni: Date, dataFim: Date, status: number): Observable<TotalPedido> {
-    return this.http.get<TotalPedido>(`${this.getUrl()}/totalPedido?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
+  totalPedido(dataIni: Date, dataFim: Date, status: string): Observable<TotalPedido> {
+    return this.http.get<TotalPedido>(`${this.getUrl()}totalPedido?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
   }
 
-  listaPedidos(dataIni: Date, dataFim: Date, status: number): Observable<ListaPedidos[]> {
-    return this.http.get<ListaPedidos[]>(`${this.getUrl()}/listaPedidos?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
+  listaPedidos(dataIni: Date, dataFim: Date, status: string): Observable<ListaPedidos[]> {
+    return this.http.get<ListaPedidos[]>(`${this.getUrl()}listaPedidos?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
   }
 
 

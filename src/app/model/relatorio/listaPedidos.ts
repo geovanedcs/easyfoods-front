@@ -4,4 +4,5 @@ export class ListaPedidos {
   quantidade: number;
   peso: number;
   total: number;
+  status: string;
 }

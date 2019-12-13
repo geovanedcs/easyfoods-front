@@ -67,10 +67,10 @@ const routes: Routes = [
     path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'relatorio', component: RelatorioComponent, canActivate: [AuthGuard]
+    path: 'relatorio', component: RelatorioComponent
   },
   {
-    path: 'relatorio/listaPedidos', component: ListaPedidosComponent, canActivate: [AuthGuard]
+    path: 'relatorio/listaPedidos', component: ListaPedidosComponent
   }
 ];
 
