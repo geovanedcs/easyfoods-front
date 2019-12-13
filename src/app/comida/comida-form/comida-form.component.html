@@ -7,9 +7,15 @@
                    id="comida"
                    pInputText
                    size="30"
+                   #comida="ngModel" required
                    type="text">
             <label for="comida">Comida</label>
         </span>
+        <div *ngIf="comida.invalid && (comida.dirty || comida.touched)" class="alert alert-danger">
+          <div *ngIf="comida.errors.required">
+            Descrição da comida é obrigatória.
+          </div>
+        </div>
       </div>
       <div class="col-12">
         <span class="ui-float-label my-2">
