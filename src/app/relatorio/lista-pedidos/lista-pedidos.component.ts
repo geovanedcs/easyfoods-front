@@ -27,7 +27,7 @@ export class ListaPedidosComponent implements OnInit {
   // Filtros
   dataIni: Date;
   dataFim: Date;
-  status: number;
+  status: string;
   display = false;
 
 
