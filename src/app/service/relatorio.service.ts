@@ -33,15 +33,15 @@ export class RelatorioService{
   }
 
   totalMarmitaPeso(dataIni: Date, dataFim: Date, status: string): Observable<TotalMarmitaPeso[]> {
-    return this.http.get<TotalMarmitaPeso[]>(`${this.getUrl()}totalMarmitaPeso?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
+    return this.http.get<TotalMarmitaPeso[]>(`${this.getUrl()}totalMarmitaPeso?dataInicial=${dataIni}&dataFinal=${dataFim}&status=${status}`);
   }
 
   totalPedido(dataIni: Date, dataFim: Date, status: string): Observable<TotalPedido> {
-    return this.http.get<TotalPedido>(`${this.getUrl()}totalPedido?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
+    return this.http.get<TotalPedido>(`${this.getUrl()}totalPedido?dataInicial=${dataIni}&dataFinal=${dataFim}&status=${status}`);
   }
 
   listaPedidos(dataIni: Date, dataFim: Date, status: string): Observable<ListaPedidos[]> {
-    return this.http.get<ListaPedidos[]>(`${this.getUrl()}listaPedidos?dataIni=${dataIni}&dataFim=${dataFim}&status=${status}`);
+    return this.http.get<ListaPedidos[]>(`${this.getUrl()}listaPedidos?dataInicial=${dataIni}&dataFinal=${dataFim}&status=${status}`);
   }
 
 

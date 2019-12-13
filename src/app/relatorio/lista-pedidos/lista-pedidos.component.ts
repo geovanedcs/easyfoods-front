@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ListaPedidos} from "../../model/relatorio/listaPedidos";
-import {TotalMarmitaPeso} from "../../model/relatorio/totalMarmitaPeso";
-import {TotalPedido} from "../../model/relatorio/totalPedido";
-import {RelatorioService} from "../../service/relatorio.service";
-import {Title} from "@angular/platform-browser";
+import {ListaPedidos} from '../../model/relatorio/listaPedidos';
+import {TotalMarmitaPeso} from '../../model/relatorio/totalMarmitaPeso';
+import {TotalPedido} from '../../model/relatorio/totalPedido';
+import {RelatorioService} from '../../service/relatorio.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -19,7 +19,7 @@ export class ListaPedidosComponent implements OnInit {
   colPeso: any[];
   colPedido: any[];
 
-  //Filtros
+  // Filtros
   dataIni: Date;
   dataFim: Date;
   status: number;
@@ -32,10 +32,10 @@ export class ListaPedidosComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Lista de Pedidos');
     this.listaStatus = [
-      {value: "CANCELADO", label: "Cancelado"},
-      {value: "SOLICITADO", label: "Solicitado"},
-      {value: "PENDENTE", label: "Pendente"},
-      {value: "PAGO", label: "Pago"}
+      {value: 'CANCELADO', label: 'Cancelado'},
+      {value: 'SOLICITADO', label: 'Solicitado'},
+      {value: 'PENDENTE', label: 'Pendente'},
+      {value: 'PAGO', label: 'Pago'}
     ];
     this.colPeso = [
       {field: 'pesoMarmita', header: 'Peso'},
@@ -47,19 +47,20 @@ export class ListaPedidosComponent implements OnInit {
       {field: 'quantidade', header: 'Quantidade'},
       {field: 'peso', header: 'Peso'},
       {field: 'total', header: 'Total'},
+      {field: 'status', header: 'Status'}
     ];
 
   }
 
   relatorioPedidos(): void {
     this.display = true;
-    this.relatorioService.listaPedidos(this.dataIni, this.dataIni, this.status).subscribe(res => {
+    this.relatorioService.listaPedidos(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.listaPedidos = res;
     });
-    this.relatorioService.totalMarmitaPeso(this.dataIni, this.dataIni, this.status).subscribe(res => {
+    this.relatorioService.totalMarmitaPeso(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.totalMarmitaPeso = res;
     });
-    this.relatorioService.totalPedido(this.dataIni, this.dataIni, this.status).subscribe(res => {
+    this.relatorioService.totalPedido(this.dataIni, this.dataFim, this.status).subscribe(res => {
       this.totalPedido = res;
     });
   }

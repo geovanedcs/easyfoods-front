@@ -43,7 +43,6 @@ export class UserService {
     this.userSubject.next(null);
     this.authService.logOn.emit(false);
     AuthService.role = '';
-    this.user = undefined;
   }
 
   getUser(): Observable<Cliente> {
