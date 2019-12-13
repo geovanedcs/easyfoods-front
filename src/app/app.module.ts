@@ -14,7 +14,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  TooltipModule, InputTextModule
+  TooltipModule, InputTextModule, DialogModule, PanelMenuModule
 } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ComidaComponent } from './comida/comida.component';
@@ -35,6 +35,10 @@ import {PedidoComponent} from "./pedido/pedido.component";
 import {PedidoFormComponent} from "./pedido/pedido-form/pedido-form.component";
 import {NgxMaskModule} from 'ngx-mask';
 import { ClientesComponent } from './auth/clientes/clientes.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
+import { ListaPedidosComponent } from './relatorio/lista-pedidos/lista-pedidos.component';
+import {SidebarService} from "./service/sidebar.service";
+import {RelatorioService} from "./service/relatorio.service";
 
 
 @NgModule({
@@ -54,6 +58,8 @@ import { ClientesComponent } from './auth/clientes/clientes.component';
     PedidoComponent,
     PedidoFormComponent,
     ClientesComponent,
+    RelatorioComponent,
+    ListaPedidosComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -79,8 +85,10 @@ import { ClientesComponent } from './auth/clientes/clientes.component';
     DropdownModule,
     NgxMaskModule.forRoot(),
     InputTextModule,
+    DialogModule,
+    PanelMenuModule,
   ],
-  providers: [MessageService, ConfirmationService, SidebarModule, {
+  providers: [MessageService, ConfirmationService, SidebarService, RelatorioService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuItem, SidebarModule} from 'primeng';
+import {MenuItem} from 'primeng';
 import {SidebarService} from './service/sidebar.service';
 import {UserService} from "./service/user.service";
 import {AuthService} from "./service/auth.service";
@@ -18,10 +18,10 @@ export class AppComponent implements OnInit {
   constructor(private sidebarService: SidebarService, private authService: AuthService, private userUser: UserService) {
     this.isLogado = sidebarService.CheckLogado();
     this.sidebarService.getMostrar$().subscribe(val => this.displaySidebar = val);
-    this.renderizaMenu();
   }
   ngOnInit(): void {
     this.sidebarService.setMostrar(false);
+    this.renderizaMenu();
     this.isLogado = this.userUser.isLogged();
     this.authService.logOn.asObservable().subscribe(res => {
       this.isLogado = res;
@@ -61,6 +61,11 @@ export class AppComponent implements OnInit {
         routerLink: 'pedido',
         icon: 'pi pi-id-card',
       },
+      {
+        label: 'Relatorios',
+        routerLink: 'relatorio',
+        icon: 'fas fa-chart-line',
+      }
     ]
   }
 }
